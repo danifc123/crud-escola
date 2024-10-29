@@ -1,0 +1,9 @@
+<div>
+  <h2>Editar Professor</h2>
+  <form (ngSubmit)="editarProfessor()">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" [(ngModel)]="professor.nome" name="nome" required>
+
+    <button type="submit">Salvar</button>
+  </form>
+</div>

@@ -1,0 +1,9 @@
+<div>
+  <h2>Editar Disciplina</h2>
+  <form (ngSubmit)="editarTurma()">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" [(ngModel)]="turma.nome" name="nome" required>
+
+    <button type="submit">Salvar</button>
+  </form>
+</div>

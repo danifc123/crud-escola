@@ -1,0 +1,9 @@
+<h2>Adicionar Turma</h2>
+<form (ngSubmit)="adicionarTurma()">
+  <label>
+    Nome:
+    <input [(ngModel)]="turma.nome" name="nome" required>
+  </label>
+
+  <button type="submit">Adicionar</button>
+</form>

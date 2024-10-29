@@ -1,0 +1,17 @@
+<input type="text" placeholder="Pesquisar turma pelo nome" [(ngModel)]="nomePesquisa" (input)="pesquisarTurma()" />
+
+
+<div *ngFor="let turma of turmas">
+  <p>{{ turma.nome }}</p>
+  <p *ngIf="!turma.ativo" class="inativo">(Inativo)</p>
+
+
+  <!-- Botão de editar e excluir para professores ativos -->
+  <button *ngIf="turma.ativo" (click)="editarTurma(turma.id)">Editar</button>
+  <button *ngIf="turma.ativo" (click)="excluirTurma(turma.id)">Excluir</button>
+
+  <!-- Botão de reativar para professores inativos -->
+  <button *ngIf="!turma.ativo" (click)="reativarTurma(turma.id)">Reativar</button>
+
+
+</div>

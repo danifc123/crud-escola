@@ -1,0 +1,8 @@
+<h2>Adicionar Professor</h2>
+<form (ngSubmit)="adicionarProfessor()">
+  <label>
+    Nome:
+    <input [(ngModel)]="professor.nome" name="nome" required>
+  </label>
+  <button type="submit">Adicionar</button>
+</form>
