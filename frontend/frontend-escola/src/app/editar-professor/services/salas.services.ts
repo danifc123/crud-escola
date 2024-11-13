@@ -11,8 +11,8 @@ export class salaService {
   constructor(private http: HttpClient) {}
 
   // Obter todos os Salas
-  getSalas() {
-    return this.http.get<any[]>(`${this.baseUrl}`);
+  getSalas(): Observable<any[]> {
+    return this.http.get<any[]>(this.baseUrl);
   }
 
   // Editar Sala

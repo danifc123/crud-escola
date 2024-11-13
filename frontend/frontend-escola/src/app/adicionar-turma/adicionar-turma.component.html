@@ -1,8 +1,36 @@
+<!-- adicionar-turma.component.html -->
 <h2>Adicionar Turma</h2>
 <form (ngSubmit)="adicionarTurma()">
   <label>
     Nome:
-    <input [(ngModel)]="turma.nome" name="nome" required>
+    <input [(ngModel)]="turma.nome" name="nome" required />
+  </label>
+
+  <label>
+    Disciplina:
+    <select [(ngModel)]="turma.id_disciplina" name="id_disciplina" required>
+      <option *ngFor="let disciplina of disciplinas" [value]="disciplina.id">
+        {{ disciplina.nome }}
+      </option>
+    </select>
+  </label>
+
+  <label>
+    Professor:
+    <select [(ngModel)]="turma.id_professor" name="id_professor" required>
+      <option *ngFor="let professor of professores" [value]="professor.id">
+        {{ professor.nome }}
+      </option>
+    </select>
+  </label>
+
+  <label>
+    Sala:
+    <select [(ngModel)]="turma.id_sala" name="id_sala" required>
+      <option *ngFor="let sala of salas" [value]="sala.id">
+        {{ sala.numero }}
+      </option>
+    </select>
   </label>
 
   <button type="submit">Adicionar</button>

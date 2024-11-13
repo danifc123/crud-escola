@@ -2,7 +2,24 @@ const pool = require("../models/db");
 
 const getTurmas = async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM turmas");
+    const query = `
+      SELECT 
+        turmas.id,
+        turmas.nome,
+        disciplinas.nome AS disciplina_nome,
+        professores.nome AS professor_nome,
+        salas.numero AS sala_numero,
+        turmas.ativo
+      FROM 
+        turmas
+      LEFT JOIN 
+        disciplinas ON turmas.id_disciplina = disciplinas.id
+      LEFT JOIN 
+        professores ON turmas.id_professor = professores.id
+      LEFT JOIN 
+        salas ON turmas.id_sala = salas.id;
+    `;
+    const result = await pool.query(query);
     res.json(result.rows);
   } catch (error) {
     console.error("Erro ao buscar turmas:", error);
@@ -11,11 +28,28 @@ const getTurmas = async (req, res) => {
 };
 
 const createTurma = async (req, res) => {
-  const { nome } = req.body;
+  const { nome, id_disciplina, id_professor, id_sala } = req.body;
+
+  // Verificar se todos os dados necessários foram fornecidos
+  if (!id_disciplina || !id_professor || !id_sala) {
+    return res.status(400).json({
+      error:
+        "Por favor, forneça todos os campos obrigatórios (disciplina, professor, sala).",
+    });
+  }
+
   try {
-    await pool.query("INSERT INTO turmas (nome) VALUES ($1)", [nome]);
-    res.status(201);
+    // Inserir a turma
+    const result = await pool.query(
+      "INSERT INTO turmas (nome, id_disciplina, id_professor, id_sala) VALUES ($1, $2, $3, $4) RETURNING id",
+      [nome, id_disciplina, id_professor, id_sala]
+    );
+
+    // Retornar o ID da turma criada
+    const turmaId = result.rows[0].id;
+    res.status(201).json({ message: "Turma criada com sucesso!", turmaId });
   } catch (error) {
+    console.error("Erro ao criar turma:", error);
     res.status(500).json({ error: "Erro ao criar turma" });
   }
 };

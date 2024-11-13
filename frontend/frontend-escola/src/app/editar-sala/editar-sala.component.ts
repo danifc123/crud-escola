@@ -24,13 +24,7 @@ export class EditarSalaComponent {
 
   carregarSala() {
     this.salaService.getSalas().subscribe((data) => {
-      const salaEncontrada = data.find((sala: any) => sala.id === this.idSala); // Mudei 'prof' para 'sala'
-      if (salaEncontrada) {
-        this.sala = salaEncontrada;
-      } else {
-        console.error('Sala não encontrada');
-        // Adicione uma lógica aqui, se necessário
-      }
+      this.sala = data.find((disc: any) => disc.id === this.idSala); // Filtra o professor pelo ID
     });
   }
 
@@ -40,7 +34,6 @@ export class EditarSalaComponent {
       return; // Impede a edição se não houver ID
     }
 
-    // Adiciona o ID ao objeto professor antes de enviar
     this.sala.id = this.idSala;
 
     this.salaService.editarSala(this.sala).subscribe(

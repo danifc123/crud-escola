@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { TurmaService } from '../editar-professor/services/turma.service';
+import { DisciplinasService } from '../editar-professor/services/disciplinas.service';
+import { ProfessorService } from '../editar-professor/services/professor.service';
+import { salaService } from '../editar-professor/services/salas.services';
 
 @Component({
   selector: 'app-lista-turmas',
@@ -9,16 +12,46 @@ import { TurmaService } from '../editar-professor/services/turma.service';
 })
 export class ListaTurmasComponent {
   turmas: any[] = [];
+  disciplinas: any[] = [];
+  professores: any[] = [];
+  salas: any[] = [];
 
-  constructor(private router: Router, private turmaService: TurmaService) {}
+  constructor(
+    private router: Router,
+    private turmaService: TurmaService,
+    private professorService: ProfessorService,
+    private disciplinasService: DisciplinasService,
+    private salaService: salaService
+  ) {}
   ngOnInit() {
     this.carregarTurma();
+    this.carregarDisciplinas();
+    this.carregarProfessores();
+    this.carregarSalas();
   }
   carregarTurma() {
     this.turmaService.getTurmas().subscribe((data) => {
       this.turmas = data;
     });
   }
+  carregarDisciplinas() {
+    this.disciplinasService.getDisciplinas().subscribe((data) => {
+      this.disciplinas = data;
+    });
+  }
+
+  carregarProfessores() {
+    this.professorService.getProfessores().subscribe((data) => {
+      this.professores = data;
+    });
+  }
+
+  carregarSalas() {
+    this.salaService.getSalas().subscribe((data) => {
+      this.salas = data;
+    });
+  }
+
   editarTurma(id: number) {
     this.router.navigate(['/editar-turma', id]);
   }

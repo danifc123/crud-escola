@@ -18,6 +18,9 @@ export class TurmaService {
     return this.http.put<void>(`${this.baseUrl}/${turma.id}`, turma);
   }
 
+  adicionarTurma(turma: any): Observable<any> {
+    return this.http.post<any>(this.baseUrl, turma);
+  }
   excluirTurma(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }

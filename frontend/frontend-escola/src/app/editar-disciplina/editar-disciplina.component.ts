@@ -33,7 +33,6 @@ export class EditarDisciplinaComponent {
       return; // Impede a edição se não houver ID
     }
 
-    // Adiciona o ID ao objeto professor antes de enviar
     this.disciplina.id = this.idDisciplina;
 
     this.disciplinasService.editarDisciplina(this.disciplina).subscribe(
