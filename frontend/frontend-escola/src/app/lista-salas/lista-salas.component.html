@@ -1,8 +1,8 @@
-<input type="text" placeholder="Pesquisar sala pelo numero" [(ngModel)]="nomePesquisa" (input)="pesquisarSalas()" />
+<input type="text" placeholder="Pesquisar sala pelo nome" [(ngModel)]="nomePesquisa" (input)="pesquisarSalas()" />
 
 
 <div *ngFor="let sala of salas">
-  <p>{{ sala.numero }}</p>
+  <p>{{ sala.nome }}</p>
   <p *ngIf="!sala.ativo" class="inativo">(Inativo)</p>
 
 

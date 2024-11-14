@@ -1,6 +1,6 @@
 <div *ngIf="sala">
   <h1>Editar Sala</h1>
-  <input [(ngModel)]="sala.numero" placeholder="Número da sala" />
+  <input [(ngModel)]="sala.nome" placeholder="Número da sala" />
   <button (click)="editarSala()">Salvar</button>
 </div>
 <div *ngIf="!sala">

@@ -28,7 +28,7 @@
     Sala:
     <select [(ngModel)]="turma.id_sala" name="id_sala" required>
       <option *ngFor="let sala of salas" [value]="sala.id">
-        {{ sala.numero }}
+        {{ sala.nome }}
       </option>
     </select>
   </label>

@@ -9,7 +9,7 @@ const searchProfessores = async (req, res) => {
       [`%${nome}%`] // Usando ILIKE para busca case-insensitive e operador de similaridade
     );
 
-    res.json(result.rows); // Retorna os professores que correspondem ao numero pesquisado
+    res.json(result.rows);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Erro ao buscar professores" });

@@ -11,9 +11,9 @@ const getSalas = async (req, res) => {
 };
 
 const createSala = async (req, res) => {
-  const { numero } = req.body;
+  const { nome } = req.body;
   try {
-    await pool.query("INSERT INTO salas (numero) VALUES ($1)", [numero]);
+    await pool.query("INSERT INTO salas (nome) VALUES ($1)", [nome]);
     res.status(201);
   } catch (error) {
     console.error("Erro ao criar sala:", error);
@@ -23,12 +23,9 @@ const createSala = async (req, res) => {
 
 const updateSala = async (req, res) => {
   const { id } = req.params;
-  const { numero } = req.body;
+  const { nome } = req.body;
   try {
-    await pool.query("UPDATE salas SET numero = $1 WHERE id = $2", [
-      numero,
-      id,
-    ]);
+    await pool.query("UPDATE salas SET nome = $1 WHERE id = $2", [nome, id]);
     res.status(200).json({ message: "Sala atualizada com sucesso" }); // Retorno como JSON
   } catch (error) {
     res.status(500).json({ error: "Erro ao atualizar sala" });
@@ -57,13 +54,11 @@ const reativarSala = async (req, res) => {
 };
 
 const searchSalas = async (req, res) => {
-  const { nome } = req.query; // Obtém o numero da query string
-
+  const { nome } = req.query;
   try {
-    const result = await pool.query(
-      "SELECT * FROM salas WHERE numero ILIKE $1",
-      [`%${nome}%`]
-    );
+    const result = await pool.query("SELECT * FROM salas WHERE nome ILIKE $1", [
+      `%${nome}%`,
+    ]);
 
     res.json(result.rows);
   } catch (error) {

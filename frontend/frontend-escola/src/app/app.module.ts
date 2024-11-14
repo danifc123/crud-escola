@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http'; // Para fazer requisições HTTP
 import { FormsModule } from '@angular/forms'; // Para trabalhar com formulários
 import { AppComponent } from './app.component'; // Componente principal
@@ -25,6 +26,7 @@ import { EditarTurmaComponent } from './editar-turma/editar-turma.component';
 @NgModule({
   declarations: [
     AppComponent,
+
     AdicionarDisciplinaComponent,
     AdicionarTurmaComponent,
     AdicionarProfessorComponent,
@@ -44,9 +46,10 @@ import { EditarTurmaComponent } from './editar-turma/editar-turma.component';
   ],
   imports: [
     BrowserModule,
+    MatTableModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule, // Configuração das rotas
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent], // Componente raiz da aplicação

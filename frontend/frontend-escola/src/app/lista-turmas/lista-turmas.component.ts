@@ -15,6 +15,7 @@ export class ListaTurmasComponent {
   disciplinas: any[] = [];
   professores: any[] = [];
   salas: any[] = [];
+  nomePesquisa: string = '';
 
   constructor(
     private router: Router,
@@ -72,7 +73,7 @@ export class ListaTurmasComponent {
     this.turmaService.reativarTurma(id).subscribe(
       () => {
         alert('Turma reativada com sucesso!');
-        this.carregarTurma(); // Recarrega a lista de professores
+        this.carregarTurma();
       },
       (error) => {
         alert('Erro ao reativar turma: ' + error.message);
@@ -80,10 +81,13 @@ export class ListaTurmasComponent {
     );
   }
 
-  nomePesquisa: string = ''; // Campo para armazenar o termo de pesquisa
+  // Campo para armazenar o termo de pesquisa
   pesquisarTurma() {
     if (this.nomePesquisa.trim() === '') {
-      this.carregarTurma(); // Se o campo estiver vazio, carregue todos os professores
+      this.carregarTurma();
+      this.carregarDisciplinas();
+      this.carregarProfessores();
+      this.carregarSalas(); // Se o campo estiver vazio, carregue todos os professores
     } else {
       this.turmaService.pesquisarTurmas(this.nomePesquisa).subscribe(
         (data) => {

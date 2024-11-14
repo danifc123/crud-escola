@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './adicionar-sala.component.html',
 })
 export class AdicionarSalaComponent {
-  sala = { numero: '' };
+  sala = { nome: '' };
 
   constructor(private dataService: DataService, private router: Router) {}
 

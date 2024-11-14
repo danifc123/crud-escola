@@ -8,7 +8,7 @@ const getTurmas = async (req, res) => {
         turmas.nome,
         disciplinas.nome AS disciplina_nome,
         professores.nome AS professor_nome,
-        salas.numero AS sala_numero,
+        salas.nome AS sala_nome,
         turmas.ativo
       FROM 
         turmas
