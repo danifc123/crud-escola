@@ -14,12 +14,21 @@ export class PaginaInicialService {
   constructor(private http: HttpClient) {}
 
   // Função para buscar todas as entidades com o termo de pesquisa
- // pagina-inicial.services.ts
-pesquisarInicial(nome: string): Observable<any[]> {
-  const turmas = this.http.get<any[]>(`${this.turmaUrl}/search`, { params: { nome } });
-  const disciplinas = this.http.get<any[]>(`${this.disciplinaUrl}/search`, { params: { nome } });
-  const professores = this.http.get<any[]>(`${this.professorUrl}/search`, { params: { nome } });
-  const salas = this.http.get<any[]>(`${this.salaUrl}/search`, { params: { nome } });
+  // pagina-inicial.services.ts
+  pesquisarInicial(nome: string): Observable<any[]> {
+    const turmas = this.http.get<any[]>(`${this.turmaUrl}/search`, {
+      params: { nome },
+    });
+    const disciplinas = this.http.get<any[]>(`${this.disciplinaUrl}/search`, {
+      params: { nome },
+    });
+    const professores = this.http.get<any[]>(`${this.professorUrl}/search`, {
+      params: { nome },
+    });
+    const salas = this.http.get<any[]>(`${this.salaUrl}/search`, {
+      params: { nome },
+    });
 
-  return forkJoin([turmas, disciplinas, professores, salas]);
+    return forkJoin([turmas, disciplinas, professores, salas]);
+  }
 }
