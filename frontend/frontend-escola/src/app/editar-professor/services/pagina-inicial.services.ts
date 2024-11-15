@@ -13,9 +13,7 @@ export class PaginaInicialService {
 
   constructor(private http: HttpClient) {}
 
-  // Função para buscar todas as entidades com o termo de pesquisa
-  // pagina-inicial.services.ts
-  pesquisarInicial(nome: string): Observable<any[]> {
+   pesquisarInicial(nome: string): Observable<any[]> {
     const turmas = this.http.get<any[]>(`${this.turmaUrl}/search`, {
       params: { nome },
     });

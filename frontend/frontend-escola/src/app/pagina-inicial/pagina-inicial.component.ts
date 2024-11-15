@@ -7,13 +7,7 @@ import { PaginaInicialService } from '../editar-professor/services/pagina-inicia
   styleUrls: ['./pagina-inicial.component.css'],
 })
 export class PaginaInicialComponent {
-  displayedColumns: string[] = [
-    'nome',
-    'sala',
-    'professor',
-    'disciplina',
-    'status',
-  ];
+  displayedColumns: string[] = ['nome', 'turma', 'professor', 'sala', 'status'];
   pesquisaResultados: any[] = []; // Resultados da pesquisa geral
   nomePesquisa: string = ''; // Termo de pesquisa
 
@@ -31,34 +25,20 @@ export class PaginaInicialComponent {
           // Extraindo dados dos resultados
           const [turmas, disciplinas, professores, salas] = resultados;
 
-          console.log('Turmas:', turmas);
-          console.log('Disciplinas:', disciplinas);
-          console.log('Professores:', professores);
-          console.log('Salas:', salas);
+          // Mapear entidades para uma estrutura comum que inclua os vínculos
+          this.pesquisaResultados = disciplinas.map((disciplina: any) => {
+            const turmaVinculada = turmas.find((turma: any) => turma.id === disciplina.turmaId) || {};
+            const professorVinculado = professores.find((prof: any) => prof.id === disciplina.professorId) || {};
+            const salaVinculada = salas.find((sala: any) => sala.id === disciplina.salaId) || {};
 
-          // Mapear as entidades para uma estrutura comum
-          this.pesquisaResultados = [
-            ...turmas.map((item: any) => ({
-              entidade: 'Turma',
-              nome: item.nome,
-              status: item.status ? 'Ativo' : 'Inativo',
-            })),
-            ...disciplinas.map((item: any) => ({
-              entidade: 'Disciplina',
-              nome: item.nome,
-              status: item.status ? 'Ativo' : 'Inativo',
-            })),
-            ...professores.map((item: any) => ({
-              entidade: 'Professor',
-              nome: item.nome,
-              status: item.status ? 'Ativo' : 'Inativo',
-            })),
-            ...salas.map((item: any) => ({
-              entidade: 'Sala',
-              nome: item.nome,
-              status: item.status ? 'Ativo' : 'Inativo',
-            })),
-          ];
+            return {
+              nome: disciplina.nome,
+              turma: turmaVinculada.nome || 'Não vinculada',
+              professor: professorVinculado.nome || 'Não vinculado',
+              sala: salaVinculada.nome || 'Não vinculada',
+              status: disciplina.status ? 'Ativo' : 'Inativo',
+            };
+          });
 
           console.log('Resultados da Pesquisa:', this.pesquisaResultados);
         },

@@ -2,7 +2,19 @@
 <form (ngSubmit)="adicionarProfessor()">
   <label>
     Nome:
-    <input [(ngModel)]="professor.nome" name="nome" required>
+    <input [(ngModel)]="professor.nome" name="nome" required />
+  </label>
+  <label>
+    Disciplina:
+    <input [(ngModel)]="professor.disciplina" name="disciplina" required />
+  </label>
+  <label>
+    CPF:
+    <input [(ngModel)]="professor.cpf" name="cpf" required />
+  </label>
+  <label>
+    Titulação:
+    <input [(ngModel)]="professor.titulacao" name="titulacao" required />
   </label>
   <button type="submit">Adicionar</button>
 </form>

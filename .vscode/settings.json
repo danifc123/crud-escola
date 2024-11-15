@@ -1,0 +1,10 @@
+{
+    "editor.colorDecorators": true,
+    "editor.defaultColorDecorators": true,
+    "workbench.preferredHighContrastColorTheme": "Default Dark Modern",
+    "workbench.colorCustomizations": {},
+    "window.autoDetectColorScheme": false,
+    "workbench.preferredLightColorTheme": "Default Dark Modern",
+    "workbench.preferredDarkColorTheme": "Default Dark Modern",
+    "explorer.decorations.colors": true
+}
