@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './adicionar-professor.component.html',
 })
 export class AdicionarProfessorComponent {
-  professor = { nome: '', disciplina: '', cpf: '', titulacao: '', status: true };
+  professor = { nome: '', cpf: '', titulacao: '', status: true };
 
   constructor(private dataService: DataService, private router: Router) {}
 

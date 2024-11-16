@@ -4,10 +4,13 @@
     Nome:
     <input [(ngModel)]="professor.nome" name="nome" required />
   </label>
-  <label>
-    Disciplina:
-    <input [(ngModel)]="professor.disciplina" name="disciplina" required />
-  </label>
+
+  <!--<label>
+    validador de cpf
+  CPF:
+  <input [(ngModel)]="professor.cpf" name="cpf" required pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" />
+</label>
+-->
   <label>
     CPF:
     <input [(ngModel)]="professor.cpf" name="cpf" required />

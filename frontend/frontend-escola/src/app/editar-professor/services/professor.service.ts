@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,8 +12,11 @@ export class ProfessorService {
 
   // Obter todos os professores
   getProfessores(): Observable<any[]> {
-    return this.http.get<any[]>(this.baseUrl);
+    return this.http.get<any>(this.baseUrl).pipe(
+      map((response: any) => response.data) // Agora acessa o array "data"
+    );
   }
+
 
   // Editar professor
   editarProfessor(professor: any): Observable<void> {

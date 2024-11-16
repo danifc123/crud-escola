@@ -6,7 +6,7 @@ const searchProfessores = async (req, res) => {
 
   try {
     const result = await pool.query(
-      "SELECT * FROM professores WHERE ativo = TRUE AND nome ILIKE $1",
+      "SELECT * FROM professores WHERE status = TRUE AND nome ILIKE $1",
       [`%${nome}%`]
     );
 
@@ -20,7 +20,7 @@ const searchProfessores = async (req, res) => {
 // Listar todos os professores ativos
 const getProfessores = async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM professores WHERE ativo = TRUE");
+    const result = await pool.query("SELECT * FROM professores ");
 
     res.json({ success: true, data: result.rows });
   } catch (error) {
@@ -31,21 +31,33 @@ const getProfessores = async (req, res) => {
 
 // Criar um novo professor
 const createProfessor = async (req, res) => {
-  const { nome } = req.body;
+  const { nome, cpf, titulacao, status } = req.body;
 
-  if (!nome) {
-    return res.status(400).json({ success: false, message: "Nome é obrigatório" });
+  // Validação básica
+  if (!nome || !cpf || !titulacao) {
+    return res.status(400).json({
+      success: false,
+      message: "Nome, CPF e titulação são obrigatórios",
+    });
   }
 
   try {
-    const result = await pool.query("INSERT INTO professores (nome, ativo) VALUES ($1, TRUE)", [nome]);
+    const result = await pool.query(
+      "INSERT INTO professores (nome, cpf, titulacao, status) VALUES ($1, $2, $3, $4) RETURNING *",
+      [nome, cpf, titulacao, status]
+    );
 
-    res.status(201).json({ success: true, message: "Professor criado com sucesso" });
+    res.status(201).json({
+      success: true,
+      message: "Professor criado com sucesso",
+      data: result.rows[0],
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, message: "Erro ao criar professor" });
   }
 };
+
 
 // Atualizar um professor
 const updateProfessor = async (req, res) => {
@@ -58,7 +70,7 @@ const updateProfessor = async (req, res) => {
 
   try {
     const result = await pool.query(
-      "UPDATE professores SET nome = $1 WHERE id = $2 AND ativo = TRUE",
+      "UPDATE professores SET nome = $1 WHERE id = $2 AND status = TRUE",
       [nome, id]
     );
 
@@ -79,7 +91,7 @@ const deleteProfessor = async (req, res) => {
 
   try {
     const result = await pool.query(
-      "UPDATE professores SET ativo = FALSE WHERE id = $1",
+      "UPDATE professores SET status = FALSE WHERE id = $1",
       [id]
     );
 
@@ -100,7 +112,7 @@ const reativarProfessor = async (req, res) => {
 
   try {
     const result = await pool.query(
-      "UPDATE professores SET ativo = TRUE WHERE id = $1",
+      "UPDATE professores SET status = TRUE WHERE id = $1",
       [id]
     );
 

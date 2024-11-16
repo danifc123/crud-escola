@@ -21,6 +21,7 @@ export class ListaProfessoresComponent implements OnInit {
   }
   carregarProfessores() {
     this.professorService.getProfessores().subscribe((data) => {
+      console.log('Dados recebidos:', data); // Verifique o formato
       this.professores = data;
     });
   }
