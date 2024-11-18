@@ -9,7 +9,7 @@ const getTurmas = async (req, res) => {
         disciplinas.nome AS disciplina_nome,
         professores.nome AS professor_nome,
         salas.nome AS sala_nome,
-        turmas.ativo
+        turmas.status
       FROM 
         turmas
       LEFT JOIN 
@@ -97,7 +97,7 @@ const deleteTurma = async (req, res) => {
   const { id } = req.params;
   try {
     const result = await pool.query(
-      "UPDATE turmas SET ativo = FALSE WHERE id = $1",
+      "UPDATE turmas SET status = FALSE WHERE id = $1",
       [id]
     );
 
@@ -115,7 +115,7 @@ const reativarTurma = async (req, res) => {
   const { id } = req.params;
   try {
     const result = await pool.query(
-      "UPDATE turmas SET ativo = TRUE WHERE id = $1",
+      "UPDATE turmas SET status = TRUE WHERE id = $1",
       [id]
     );
 

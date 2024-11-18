@@ -61,7 +61,7 @@ const deleteDisciplina = async (req, res) => {
   const { id } = req.params;
   try {
     const result = await pool.query(
-      "UPDATE disciplinas SET ativo = FALSE WHERE id = $1",
+      "UPDATE disciplinas SET status = FALSE WHERE id = $1",
       [id]
     );
 
@@ -78,7 +78,7 @@ const reativarDisciplina = async (req, res) => {
   const { id } = req.params;
   try {
     const result = await pool.query(
-      "UPDATE disciplinas SET ativo = TRUE WHERE id = $1",
+      "UPDATE disciplinas SET status = TRUE WHERE id = $1",
       [id]
     );
 

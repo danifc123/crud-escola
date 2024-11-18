@@ -3,13 +3,13 @@
 
 <div *ngFor="let disciplina of disciplinas">
   <p>{{ disciplina.nome }}</p>
-  <p *ngIf="!disciplina.ativo" class="inativo">(Inativo)</p>
+  <p *ngIf="!disciplina.status" class="instatus">(Instatus)</p>
 
 
-  <button *ngIf="disciplina.ativo" (click)="editarDisciplina(disciplina.id)">Editar</button>
-  <button *ngIf="disciplina.ativo" (click)="excluirDisciplina(disciplina.id)">Excluir</button>
+  <button *ngIf="disciplina.status" (click)="editarDisciplina(disciplina.id)">Editar</button>
+  <button *ngIf="disciplina.status" (click)="excluirDisciplina(disciplina.id)">Excluir</button>
 
-  <button *ngIf="!disciplina.ativo" (click)="reativarDisciplina(disciplina.id)">Reativar</button>
+  <button *ngIf="!disciplina.status" (click)="reativarDisciplina(disciplina.id)">Reativar</button>
 
 
 </div>

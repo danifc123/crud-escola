@@ -25,7 +25,7 @@ CREATE TABLE professores (
 -- Tabela de Salas
 CREATE TABLE salas (
     id SERIAL PRIMARY KEY,
-    nome VARCHAR(10) NOT NULL,
+    nome VARCHAR(100) NOT NULL,
     local VARCHAR(100) NOT NULL,      -- Novo campo: local
     capacidade INT NOT NULL,          -- Novo campo: capacidade
     status BOOLEAN DEFAULT TRUE       -- Campo atualizado para "status"

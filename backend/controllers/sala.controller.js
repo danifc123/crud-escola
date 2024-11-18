@@ -52,7 +52,7 @@ const updateSala = async (req, res) => {
 const deleteSala = async (req, res) => {
   const { id } = req.params;
   try {
-    await pool.query("UPDATE salas SET ativo = FALSE WHERE id = $1", [id]);
+    await pool.query("UPDATE salas SET status = FALSE WHERE id = $1", [id]);
     res.status(200).json({ message: "Sala excluída com sucesso" });
   } catch (error) {
     res.status(500).json({ error: "Erro ao excluir sala" });
@@ -62,7 +62,7 @@ const deleteSala = async (req, res) => {
 const reativarSala = async (req, res) => {
   const { id } = req.params;
   try {
-    await pool.query("UPDATE salas SET ativo = TRUE WHERE id = $1", [id]);
+    await pool.query("UPDATE salas SET status = TRUE WHERE id = $1", [id]);
     res.status(200).json({ message: "Sala reativada com sucesso" });
   } catch (error) {
     console.error("Erro ao reativar sala:", error);

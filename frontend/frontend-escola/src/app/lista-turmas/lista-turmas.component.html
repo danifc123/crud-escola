@@ -7,15 +7,15 @@
   <p>Professor:{{ turma.professor_nome }}</p>
   <p>Sala:{{ turma.sala_nome}}</p>
 
-  <p *ngIf="!turma.ativo" class="inativo">(Inativo)</p>
+  <p *ngIf="!turma.status" class="instatus">(Instatus)</p>
 
 
-  <!-- Botão de editar e excluir para professores ativos -->
-  <button *ngIf="turma.ativo" (click)="editarTurma(turma.id)">Editar</button>
-  <button *ngIf="turma.ativo" (click)="excluirTurma(turma.id)">Excluir</button>
+  <!-- Botão de editar e excluir para professores statuss -->
+  <button *ngIf="turma.status" (click)="editarTurma(turma.id)">Editar</button>
+  <button *ngIf="turma.status" (click)="excluirTurma(turma.id)">Excluir</button>
 
-  <!-- Botão de reativar para professores inativos -->
-  <button *ngIf="!turma.ativo" (click)="reativarTurma(turma.id)">Reativar</button>
+  <!-- Botão de reativar para professores instatuss -->
+  <button *ngIf="!turma.status" (click)="reativarTurma(turma.id)">Reativar</button>
 
 
 </div>

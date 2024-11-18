@@ -3,15 +3,15 @@
 
 <div *ngFor="let sala of salas">
   <p>{{ sala.nome }}</p>
-  <p *ngIf="!sala.ativo" class="inativo">(Inativo)</p>
+  <p *ngIf="!sala.status" class="instatus">(Instatus)</p>
 
 
-  <!-- Botão de editar e excluir para professores ativos -->
-  <button *ngIf="sala.ativo" (click)="editarSala(sala.id)">Editar</button>
-  <button *ngIf="sala.ativo" (click)="excluirSala(sala.id)">Excluir</button>
+  <!-- Botão de editar e excluir para professores statuss -->
+  <button *ngIf="sala.status" (click)="editarSala(sala.id)">Editar</button>
+  <button *ngIf="sala.status" (click)="excluirSala(sala.id)">Excluir</button>
 
-  <!-- Botão de reativar para professores inativos -->
-  <button *ngIf="!sala.ativo" (click)="reativarSala(sala.id)">Reativar</button>
+  <!-- Botão de reativar para professores instatuss -->
+  <button *ngIf="!sala.status" (click)="reativarSala(sala.id)">Reativar</button>
 
 
 </div>

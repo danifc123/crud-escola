@@ -13,11 +13,13 @@ const searchProfessores = async (req, res) => {
     res.json({ success: true, data: result.rows });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ success: false, message: "Erro ao buscar professores" });
+    res
+      .status(500)
+      .json({ success: false, message: "Erro ao buscar professores" });
   }
 };
 
-// Listar todos os professores ativos
+// Listar todos os professores statuss
 const getProfessores = async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM professores ");
@@ -25,7 +27,9 @@ const getProfessores = async (req, res) => {
     res.json({ success: true, data: result.rows });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ success: false, message: "Erro ao buscar professores" });
+    res
+      .status(500)
+      .json({ success: false, message: "Erro ao buscar professores" });
   }
 };
 
@@ -54,10 +58,11 @@ const createProfessor = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ success: false, message: "Erro ao criar professor" });
+    res
+      .status(500)
+      .json({ success: false, message: "Erro ao criar professor" });
   }
 };
-
 
 // Atualizar um professor
 const updateProfessor = async (req, res) => {
@@ -65,7 +70,9 @@ const updateProfessor = async (req, res) => {
   const { nome } = req.body;
 
   if (!nome) {
-    return res.status(400).json({ success: false, message: "Nome é obrigatório" });
+    return res
+      .status(400)
+      .json({ success: false, message: "Nome é obrigatório" });
   }
 
   try {
@@ -75,13 +82,19 @@ const updateProfessor = async (req, res) => {
     );
 
     if (result.rowCount === 0) {
-      return res.status(404).json({ success: false, message: "Professor não encontrado" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Professor não encontrado" });
     }
 
-    res.status(200).json({ success: true, message: "Professor atualizado com sucesso" });
+    res
+      .status(200)
+      .json({ success: true, message: "Professor atualizado com sucesso" });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ success: false, message: "Erro ao atualizar professor" });
+    res
+      .status(500)
+      .json({ success: false, message: "Erro ao atualizar professor" });
   }
 };
 
@@ -96,13 +109,19 @@ const deleteProfessor = async (req, res) => {
     );
 
     if (result.rowCount === 0) {
-      return res.status(404).json({ success: false, message: "Professor não encontrado" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Professor não encontrado" });
     }
 
-    res.status(200).json({ success: true, message: "Professor excluído com sucesso" });
+    res
+      .status(200)
+      .json({ success: true, message: "Professor excluído com sucesso" });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ success: false, message: "Erro ao excluir professor" });
+    res
+      .status(500)
+      .json({ success: false, message: "Erro ao excluir professor" });
   }
 };
 
@@ -117,13 +136,19 @@ const reativarProfessor = async (req, res) => {
     );
 
     if (result.rowCount === 0) {
-      return res.status(404).json({ success: false, message: "Professor não encontrado" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Professor não encontrado" });
     }
 
-    res.status(200).json({ success: true, message: "Professor reativado com sucesso" });
+    res
+      .status(200)
+      .json({ success: true, message: "Professor reativado com sucesso" });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ success: false, message: "Erro ao reativar professor" });
+    res
+      .status(500)
+      .json({ success: false, message: "Erro ao reativar professor" });
   }
 };
 

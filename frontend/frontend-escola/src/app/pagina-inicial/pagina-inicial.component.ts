@@ -27,16 +27,22 @@ export class PaginaInicialComponent {
 
           // Mapear entidades para uma estrutura comum que inclua os vínculos
           this.pesquisaResultados = disciplinas.map((disciplina: any) => {
-            const turmaVinculada = turmas.find((turma: any) => turma.id === disciplina.turmaId) || {};
-            const professorVinculado = professores.find((prof: any) => prof.id === disciplina.professorId) || {};
-            const salaVinculada = salas.find((sala: any) => sala.id === disciplina.salaId) || {};
+            const turmaVinculada =
+              turmas.find((turma: any) => turma.id === disciplina.turmaId) ||
+              {};
+            const professorVinculado =
+              professores.find(
+                (prof: any) => prof.id === disciplina.professorId
+              ) || {};
+            const salaVinculada =
+              salas.find((sala: any) => sala.id === disciplina.salaId) || {};
 
             return {
               nome: disciplina.nome,
               turma: turmaVinculada.nome || 'Não vinculada',
               professor: professorVinculado.nome || 'Não vinculado',
               sala: salaVinculada.nome || 'Não vinculada',
-              status: disciplina.status ? 'Ativo' : 'Inativo',
+              status: disciplina.status ? 'status' : 'Instatus',
             };
           });
 

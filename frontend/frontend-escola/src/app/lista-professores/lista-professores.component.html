@@ -3,14 +3,14 @@
 
 <div *ngFor="let professor of professores">
   <p>{{ professor.nome }}</p>
-  <p *ngIf="!professor.status" class="inativo">(Inativo)</p>
+  <p *ngIf="!professor.status" class="instatus">(Instatus)</p>
 
 
-  <!-- Botão de editar e excluir para professores ativos -->
+  <!-- Botão de editar e excluir para professores statuss -->
   <button *ngIf="professor.status" (click)="editarProfessor(professor.id)">Editar</button>
   <button *ngIf="professor.status" (click)="excluirProfessor(professor.id)">Excluir</button>
 
-  <!-- Botão de reativar para professores inativos -->
+  <!-- Botão de reativar para professores instatuss -->
   <button *ngIf="!professor.status" (click)="reativarProfessor(professor.id)">Reativar</button>
 
 
