@@ -12,7 +12,7 @@ const searchDisciplinas = async (req, res) => {
     res.json(result.rows); // Retorna os professores que correspondem ao nome pesquisado
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Erro ao buscar professores" });
+    res.status(500).json({ error: "Erro ao buscar disciplinas" });
   }
 };
 const getDisciplinas = async (req, res) => {
@@ -25,12 +25,21 @@ const getDisciplinas = async (req, res) => {
 };
 
 const createDisciplina = async (req, res) => {
-  const { nome } = req.body;
+  const { nome, codigo, periodo, status } = req.body;
+
   try {
-    await pool.query("INSERT INTO disciplinas (nome) VALUES ($1)", [nome]);
-    res.status(201);
+    // Inserindo a disciplina no banco de dados
+    const result = await pool.query(
+      `INSERT INTO disciplinas (nome, codigo, periodo, status) 
+       VALUES ($1, $2, $3, $4) RETURNING *`,
+      [nome, codigo, periodo, status]
+    );
+
+    // Respondendo com o resultado da inserção
+    res.status(201).json(result.rows[0]);
   } catch (error) {
-    res.status(500).json({ error: "Erro ao criar disciplina" });
+    console.error("Erro ao criar disciplina:", error);
+    res.status(500).json({ message: "Erro ao criar disciplina" });
   }
 };
 

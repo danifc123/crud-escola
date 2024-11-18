@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './adicionar-disciplina.component.html',
 })
 export class AdicionarDisciplinaComponent {
-  disciplina = { nome: '' };
+  disciplina = { nome: '', codigo: '', periodo: '', status: true };
 
   constructor(private dataService: DataService, private router: Router) {}
 
@@ -15,7 +15,7 @@ export class AdicionarDisciplinaComponent {
     this.dataService.addDisciplina(this.disciplina).subscribe(
       () => {
         alert('disciplina adicionada com sucesso!');
-        this.router.navigate(['/disciplinas']); // Redirecionar para a lista de disciplinas
+        this.router.navigate(['/pagina-inicial']); // Redirecionar para a lista de disciplinas
       },
       (error) => {
         console.error('Erro ao adicionar disciplina', error);

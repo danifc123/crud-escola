@@ -11,13 +11,30 @@ const getSalas = async (req, res) => {
 };
 
 const createSala = async (req, res) => {
-  const { nome } = req.body;
+  const { nome, local, capacidade, status } = req.body;
+
+  if (!nome || !local || !capacidade) {
+    return res.status(400).json({
+      success: false,
+      message: "Nome, Local e Capacidade são obrigatórios",
+    });
+  }
+
   try {
-    await pool.query("INSERT INTO salas (nome) VALUES ($1)", [nome]);
-    res.status(201);
+    const result = await pool.query(
+      "INSERT INTO salas (nome, local, capacidade, status) VALUES ($1, $2, $3, $4) RETURNING *",
+      [nome, local, capacidade, status]
+    );
+    res.status(201).json({
+      success: true,
+      message: "Sala criado com sucesso",
+      data: result.rows[0],
+    });
+
+    // Respondendo com a nova sala criada
   } catch (error) {
-    console.error("Erro ao criar sala:", error);
-    res.status(500);
+    console.error(error);
+    res.status(500).json({ success: false, message: "Erro ao criar salas" });
   }
 };
 

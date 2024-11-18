@@ -1,8 +1,16 @@
 <h2>Adicionar Sala</h2>
 <form (ngSubmit)="adicionarSala()">
   <label>
-    Número ou Nome:
+    Nome:
     <input [(ngModel)]="sala.nome" name="nome" required>
+  </label>
+  <label>
+    Local:
+    <input [(ngModel)]="sala.local" name="local" required>
+  </label>
+  <label>
+    Capacidade:
+    <input [(ngModel)]="sala.capacidade" name="capacidade" required>
   </label>
   <label>
     <button type="submit">Adicionar</button>

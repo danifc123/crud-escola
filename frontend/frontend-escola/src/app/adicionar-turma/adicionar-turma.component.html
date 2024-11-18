@@ -32,6 +32,25 @@
       </option>
     </select>
   </label>
+  <div>
+    <label for="dia_semana">Dia da Semana:</label>
+    <select id="dia_semana" [(ngModel)]="turma.dia_semana" name="dia_semana" required>
+      <option value="Segunda-feira">Segunda-feira</option>
+      <option value="Terça-feira">Terça-feira</option>
+      <option value="Quarta-feira">Quarta-feira</option>
+      <option value="Quinta-feira">Quinta-feira</option>
+      <option value="Sexta-feira">Sexta-feira</option>
+    </select>
+  </div>
+  <div>
+    <label for="horario_inicio">Horário de Início:</label>
+    <input type="time" id="horario_inicio" [(ngModel)]="turma.horario_inicio" name="horario_inicio" required />
+  </div>
+
+  <div>
+    <label for="horario_termino">Horário de Término:</label>
+    <input type="time" id="horario_termino" [(ngModel)]="turma.horario_termino" name="horario_termino" required />
+  </div>
 
   <button type="submit">Adicionar</button>
 </form>

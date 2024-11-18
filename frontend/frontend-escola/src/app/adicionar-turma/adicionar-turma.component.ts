@@ -12,10 +12,28 @@ import { salaService } from '../editar-professor/services/salas.services';
   templateUrl: './adicionar-turma.component.html',
 })
 export class AdicionarTurmaComponent implements OnInit {
-  turma = { nome: '', id_disciplina: '', id_professor: '', id_sala: '' };
+  turma = {
+    nome: '',
+    id_disciplina: '',
+    id_professor: '',
+    id_sala: '',
+    dia_semana: '',
+    horario_inicio: '',
+    horario_termino: '',
+    status: true,
+  };
   disciplinas: any[] = [];
   professores: any[] = [];
   salas: any[] = [];
+  diasSemana = [
+    'Segunda-feira',
+    'Terça-feira',
+    'Quarta-feira',
+    'Quinta-feira',
+    'Sexta-feira',
+    'Sábado',
+    'Domingo',
+  ];
 
   constructor(
     private turmaService: TurmaService,
@@ -50,10 +68,15 @@ export class AdicionarTurmaComponent implements OnInit {
   }
 
   adicionarTurma() {
+    console.log(this.turma);
     if (
+      !this.turma.nome ||
       !this.turma.id_disciplina ||
       !this.turma.id_professor ||
-      !this.turma.id_sala
+      !this.turma.id_sala ||
+      !this.turma.dia_semana ||
+      !this.turma.horario_inicio ||
+      !this.turma.horario_termino
     ) {
       alert('Por favor, preencha todos os campos.');
       return;
@@ -62,9 +85,11 @@ export class AdicionarTurmaComponent implements OnInit {
     this.turmaService.adicionarTurma(this.turma).subscribe(
       () => {
         alert('Turma adicionada com sucesso!');
+        this.router.navigate(['/pagina-inicial']); // Redirecionar para a lista de turmas
       },
-      () => {
+      (error) => {
         alert('Erro ao adicionar turma!');
+        console.error(error);
       }
     );
   }

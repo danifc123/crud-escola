@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './adicionar-sala.component.html',
 })
 export class AdicionarSalaComponent {
-  sala = { nome: '' };
+  sala = { nome: '', local: '', capacidade: '', status: true };
 
   constructor(private dataService: DataService, private router: Router) {}
 
@@ -15,7 +15,7 @@ export class AdicionarSalaComponent {
     this.dataService.addSala(this.sala).subscribe(
       () => {
         alert('Sala adicionada com sucesso!');
-        this.router.navigate(['/salas']); // Redirecionar para a lista de salas
+        this.router.navigate(['/pagina-inicial']);
       },
       (error) => {
         console.error('Erro ao adicionar sala', error);

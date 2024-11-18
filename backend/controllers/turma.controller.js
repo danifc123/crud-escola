@@ -28,29 +28,57 @@ const getTurmas = async (req, res) => {
 };
 
 const createTurma = async (req, res) => {
-  const { nome, id_disciplina, id_professor, id_sala } = req.body;
+  const {
+    nome,
+    id_disciplina,
+    id_professor,
+    id_sala,
+    dia_semana,
+    horario_inicio,
+    horario_termino,
+  } = req.body;
 
-  // Verificar se todos os dados necessários foram fornecidos
-  if (!id_disciplina || !id_professor || !id_sala) {
+  // Validação básica
+  if (
+    !nome ||
+    !id_disciplina ||
+    !id_professor ||
+    !id_sala ||
+    !dia_semana ||
+    !horario_inicio ||
+    !horario_termino
+  ) {
     return res.status(400).json({
-      error:
-        "Por favor, forneça todos os campos obrigatórios (disciplina, professor, sala).",
+      success: false,
+      message:
+        "Nome, id_disciplina, id_professor, id_sala, dia_semana, horario_inicio e horario_termino são obrigatórios",
     });
   }
 
   try {
-    // Inserir a turma
+    // Inserir dados na tabela de turmas
     const result = await pool.query(
-      "INSERT INTO turmas (nome, id_disciplina, id_professor, id_sala) VALUES ($1, $2, $3, $4) RETURNING id",
-      [nome, id_disciplina, id_professor, id_sala]
+      "INSERT INTO turmas (nome, id_disciplina, id_professor, id_sala, dia_semana, horario_inicio, horario_termino) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *",
+      [
+        nome,
+        id_disciplina,
+        id_professor,
+        id_sala,
+        dia_semana,
+        horario_inicio,
+        horario_termino,
+      ]
     );
 
-    // Retornar o ID da turma criada
-    const turmaId = result.rows[0].id;
-    res.status(201).json({ message: "Turma criada com sucesso!", turmaId });
+    // Resposta de sucesso
+    res.status(201).json({
+      success: true,
+      message: "Turma criada com sucesso",
+      data: result.rows[0],
+    });
   } catch (error) {
-    console.error("Erro ao criar turma:", error);
-    res.status(500).json({ error: "Erro ao criar turma" });
+    console.error(error);
+    res.status(500).json({ success: false, message: "Erro ao criar turma" });
   }
 };
 
