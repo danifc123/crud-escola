@@ -2,23 +2,7 @@ const pool = require("../models/db");
 
 const getTurmas = async (req, res) => {
   try {
-    const query = `
-      SELECT 
-        turmas.id,
-        turmas.nome,
-        disciplinas.nome AS disciplina_nome,
-        professores.nome AS professor_nome,
-        salas.nome AS sala_nome,
-        turmas.status
-      FROM 
-        turmas
-      LEFT JOIN 
-        disciplinas ON turmas.id_disciplina = disciplinas.id
-      LEFT JOIN 
-        professores ON turmas.id_professor = professores.id
-      LEFT JOIN 
-        salas ON turmas.id_sala = salas.id;
-    `;
+    const query = `SELECT * from turmas`;
     const result = await pool.query(query);
     res.json(result.rows);
   } catch (error) {

@@ -3,10 +3,6 @@
 
 <div *ngFor="let turma of turmas">
   <p><strong>{{ turma.nome }}</strong></p>
-  <p>Disciplina: {{ turma.disciplina_nome }}</p>
-  <p>Professor:{{ turma.professor_nome }}</p>
-  <p>Sala:{{ turma.sala_nome}}</p>
-
   <p *ngIf="!turma.status" class="instatus">(Instatus)</p>
 
 

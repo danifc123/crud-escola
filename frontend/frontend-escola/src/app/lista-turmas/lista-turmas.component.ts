@@ -12,47 +12,17 @@ import { salaService } from '../editar-professor/services/salas.services';
 })
 export class ListaTurmasComponent {
   turmas: any[] = [];
-  disciplinas: any[] = [];
-  professores: any[] = [];
-  salas: any[] = [];
   nomePesquisa: string = '';
 
-  constructor(
-    private router: Router,
-    private turmaService: TurmaService,
-    private professorService: ProfessorService,
-    private disciplinasService: DisciplinasService,
-    private salaService: salaService
-  ) {}
+  constructor(private router: Router, private turmaService: TurmaService) {}
   ngOnInit() {
     this.carregarTurma();
-    this.carregarDisciplinas();
-    this.carregarProfessores();
-    this.carregarSalas();
   }
   carregarTurma() {
     this.turmaService.getTurmas().subscribe((data) => {
       this.turmas = data;
     });
   }
-  carregarDisciplinas() {
-    this.disciplinasService.getDisciplinas().subscribe((data) => {
-      this.disciplinas = data;
-    });
-  }
-
-  carregarProfessores() {
-    this.professorService.getProfessores().subscribe((data) => {
-      this.professores = data;
-    });
-  }
-
-  carregarSalas() {
-    this.salaService.getSalas().subscribe((data) => {
-      this.salas = data;
-    });
-  }
-
   editarTurma(id: number) {
     this.router.navigate(['/editar-turma', id]);
   }
@@ -85,9 +55,7 @@ export class ListaTurmasComponent {
   pesquisarTurma() {
     if (this.nomePesquisa.trim() === '') {
       this.carregarTurma();
-      this.carregarDisciplinas();
-      this.carregarProfessores();
-      this.carregarSalas(); // Se o campo estiver vazio, carregue todos os professores
+      // Se o campo estiver vazio, carregue todos os professores
     } else {
       this.turmaService.pesquisarTurmas(this.nomePesquisa).subscribe(
         (data) => {
