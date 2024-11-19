@@ -9,7 +9,6 @@ import { AdicionarTurmaComponent } from './adicionar-turma/adicionar-turma.compo
 import { ListaSalasComponent } from './lista-salas/lista-salas.component'; // Lista de salas
 import { AdicionarSalaComponent } from './adicionar-sala/adicionar-sala.component'; // Adicionar sala
 import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.component';
-import { AppComponent } from './app.component';
 import { EditarProfessorComponent } from './editar-professor/editar-professor.component';
 import { EditarDisciplinaComponent } from './editar-disciplina/editar-disciplina.component';
 import { EditarSalaComponent } from './editar-sala/editar-sala.component';

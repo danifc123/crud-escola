@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PaginaInicialService } from './editar-professor/services/pagina-inicial.services';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -17,27 +17,10 @@ export class AppComponent {
     this.carregarInicio();
 
     // Monitora a navegação para esconder ou mostrar a tabela
-    this.router.events.subscribe(() => {
-      const rotasOcultarTabela = [
-        '/pagina-inicial',
-        '/adicionar-professor',
-        '/adicionar-disciplina',
-        '/adicionar-turma',
-        '/adicionar-sala',
-        '/professores',
-        '/turmas',
-        '/disciplinas',
-        '/salas',
-        '/editar-professor/:id',
-        '/editar-disciplina/:id',
-        '/editar-sala/:id',
-        '/editar-turma/:id',
-        '/pesquisar-professor',
-        '/pesquisar-disciplina',
-        '/pesquisar-turma',
-        '/pesquisar-sala',
-      ]; // Adicione aqui as rotas que devem esconder a tabela
-      this.mostrarTabela = !rotasOcultarTabela.includes(this.router.url);
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.verificarRota(event.urlAfterRedirects);
+      }
     });
   }
 
@@ -50,6 +33,31 @@ export class AppComponent {
   ];
   pesquisaResultados: any[] = []; // Resultados da pesquisa geral
   nomePesquisa: string = ''; // Termo de pesquisa
+
+  verificarRota(url: string) {
+    // Rotas específicas onde a tabela deve desaparecer
+    const rotasOcultarTabela = [
+      '/pagina-inicial',
+      '/adicionar-professor',
+      '/adicionar-disciplina',
+      '/adicionar-turma',
+      '/adicionar-sala',
+      '/editar-professor',
+      '/editar-disciplina',
+      '/editar-turma',
+      '/editar-sala',
+      '/disciplinas',
+      '/turmas',
+      '/salas',
+      '/professores',
+    ];
+
+    // Checa se a URL atual corresponde às rotas ou padrões dinâmicos
+    const rotaComParametroId =
+      /\/editar-(sala|disciplina|professor|turma)\/\d+$/; // Ex.: '/editar-sala/123'
+    this.mostrarTabela =
+      !rotasOcultarTabela.includes(url) && !rotaComParametroId.test(url);
+  }
 
   carregarInicio() {
     this.paginaInicial.getInicio().subscribe((data) => {
