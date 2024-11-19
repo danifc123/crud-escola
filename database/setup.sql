@@ -17,7 +17,7 @@ CREATE TABLE disciplinas (
 CREATE TABLE professores (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
-    cpf VARCHAR(11) NOT NULL UNIQUE,  -- Novo campo: CPF com valor único
+    cpf VARCHAR(14) NOT NULL UNIQUE,  -- Novo campo: CPF com valor único
     titulacao VARCHAR(50) NOT NULL,   -- Novo campo: titulação
     status BOOLEAN DEFAULT TRUE       -- Campo atualizado para "status"
 );
