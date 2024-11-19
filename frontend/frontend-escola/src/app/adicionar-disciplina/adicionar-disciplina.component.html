@@ -1,13 +1,41 @@
 <h2>Adicionar Disciplina</h2>
 <form (ngSubmit)="adicionarDisciplina()">
-  <label>
-    Nome:
-    <input [(ngModel)]="disciplina.nome" name="nome" required>
-  </label>
-  <label>
-    Período:
-    <input [(ngModel)]="disciplina.periodo" name="nome" required>
-  </label>
+  <div>
+    <label for="nome">Nome da Disciplina:</label>
+    <input type="text" id="nome" [(ngModel)]="disciplina.nome" name="nome" required />
+  </div>
+
+  <div>
+    <label for="codigo">Código da Disciplina:</label>
+    <input type="text" id="codigo" [(ngModel)]="disciplina.codigo" name="codigo" maxlength="10" required (input)="verificarCodigo()" />
+    <p *ngIf="erroCodigo" style="color: red;">{{ erroCodigo }}</p>
+  </div>
+
+  <div>
+    <label for="periodo">Período:</label>
+    <input type="text" id="periodo" [(ngModel)]="disciplina.periodo" name="periodo" required />
+  </div>
 
   <button type="submit">Adicionar</button>
 </form>
+
+
+
+
+
+
+
+
+
+
+
+<!--    Ideia para habilitar ou desabilitar os status
+
+
+  <div>
+    <label>
+      <input type="checkbox" [(ngModel)]="disciplina.status" name="status" />
+      Ativo
+    </label>
+  </div>
+-->
