@@ -7,6 +7,7 @@ const disciplinasController = require("../backend/controllers/disciplinasControl
 const professoresController = require("../backend/controllers/professor.controller");
 const turmasController = require("../backend/controllers/turma.controller");
 const salasController = require("../backend/controllers/sala.controller.js");
+const paginainIcialController = require("../backend/controllers/paginaInicial.controller.js");
 
 const app = express();
 const port = 3000;
@@ -14,6 +15,12 @@ const port = 3000;
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
+
+app.get("/pagina-inicial", paginainIcialController.getInicio);
+app.get(
+  "/pagina-inicial/professor",
+  paginainIcialController.getProfessorByName
+);
 
 // Rotas para disciplinas
 app.get("/disciplinas", disciplinasController.getDisciplinas);

@@ -10,23 +10,16 @@ export class PaginaInicialService {
   private disciplinaUrl = 'http://localhost:3000/disciplinas';
   private professorUrl = 'http://localhost:3000/professores';
   private salaUrl = 'http://localhost:3000/salas';
-
+  private inicioUrl = 'http://localhost:3000/pagina-inicial';
   constructor(private http: HttpClient) {}
 
-   pesquisarInicial(nome: string): Observable<any[]> {
-    const turmas = this.http.get<any[]>(`${this.turmaUrl}/search`, {
-      params: { nome },
-    });
-    const disciplinas = this.http.get<any[]>(`${this.disciplinaUrl}/search`, {
-      params: { nome },
-    });
-    const professores = this.http.get<any[]>(`${this.professorUrl}/search`, {
-      params: { nome },
-    });
-    const salas = this.http.get<any[]>(`${this.salaUrl}/search`, {
-      params: { nome },
-    });
-
-    return forkJoin([turmas, disciplinas, professores, salas]);
+  getInicio(): Observable<any[]> {
+    return this.http.get<any[]>(this.inicioUrl);
+  }
+  pesquisarProfessor(nome: string): Observable<any[]> {
+    return this.http.get<any[]>(
+      `http://localhost:3000/pagina-inicial/professor`,
+      { params: { nome } }
+    );
   }
 }

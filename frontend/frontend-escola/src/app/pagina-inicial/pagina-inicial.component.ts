@@ -7,52 +7,40 @@ import { PaginaInicialService } from '../editar-professor/services/pagina-inicia
   styleUrls: ['./pagina-inicial.component.css'],
 })
 export class PaginaInicialComponent {
-  displayedColumns: string[] = ['nome', 'turma', 'professor', 'sala', 'status'];
+  constructor(private paginaInicial: PaginaInicialService) {}
+  ngOnInit() {
+    this.carregarInicio();
+  }
+  displayedColumns: string[] = [
+    'professor',
+    'turma',
+    'titulacao',
+    'sala',
+    'status',
+  ];
   pesquisaResultados: any[] = []; // Resultados da pesquisa geral
   nomePesquisa: string = ''; // Termo de pesquisa
 
-  constructor(private paginaInicial: PaginaInicialService) {}
-
-  pesquisaGeral() {
+  carregarInicio() {
+    this.paginaInicial.getInicio().subscribe((data) => {
+      console.log('Dados recebidos:', data); // Verifique o formato
+      this.pesquisaResultados = data; // Popula a tabela
+    });
+  }
+  pesquisarProfessor() {
     if (this.nomePesquisa.trim() === '') {
-      this.pesquisaResultados = [];
-    } else {
-      this.paginaInicial.pesquisarInicial(this.nomePesquisa).subscribe(
-        (resultados) => {
-          // Limpar o array de resultados
-          this.pesquisaResultados = [];
-
-          // Extraindo dados dos resultados
-          const [turmas, disciplinas, professores, salas] = resultados;
-
-          // Mapear entidades para uma estrutura comum que inclua os vínculos
-          this.pesquisaResultados = disciplinas.map((disciplina: any) => {
-            const turmaVinculada =
-              turmas.find((turma: any) => turma.id === disciplina.turmaId) ||
-              {};
-            const professorVinculado =
-              professores.find(
-                (prof: any) => prof.id === disciplina.professorId
-              ) || {};
-            const salaVinculada =
-              salas.find((sala: any) => sala.id === disciplina.salaId) || {};
-
-            return {
-              nome: disciplina.nome,
-              turma: turmaVinculada.nome || 'Não vinculada',
-              professor: professorVinculado.nome || 'Não vinculado',
-              sala: salaVinculada.nome || 'Não vinculada',
-              status: disciplina.status ? 'status' : 'Instatus',
-            };
-          });
-
-          console.log('Resultados da Pesquisa:', this.pesquisaResultados);
-        },
-        (error) => {
-          alert('Erro ao realizar busca: ' + error.message);
-          console.log(error);
-        }
-      );
+      alert('Por favor, insira o nome do professor para pesquisar.');
+      return;
     }
+
+    this.paginaInicial.pesquisarProfessor(this.nomePesquisa).subscribe(
+      (resultados) => {
+        console.log('Resultados da pesquisa:', resultados);
+        this.pesquisaResultados = resultados; // Atualiza a tabela com os dados do professor
+      },
+      (error) => {
+        alert('Erro ao buscar professor: ' + error.message);
+      }
+    );
   }
 }
