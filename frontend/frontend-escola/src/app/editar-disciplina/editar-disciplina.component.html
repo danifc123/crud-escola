@@ -2,7 +2,19 @@
   <h2>Editar Disciplina</h2>
   <form (ngSubmit)="editarDisciplina()">
     <label for="nome">Nome:</label>
-    <input type="text" id="nome" [(ngModel)]="disciplina.nome" name="nome" required>
+    <input type="text" id="nome" [(ngModel)]="disciplina.nome" name="nome" required />
+
+    <label for="codigo">Código:</label>
+    <input type="text" id="codigo" [(ngModel)]="disciplina.codigo" name="codigo" required />
+
+    <label for="periodo">Período:</label>
+    <input type="text" id="periodo" [(ngModel)]="disciplina.periodo" name="periodo" required />
+
+    <label for="status">Status:</label>
+    <select id="status" [(ngModel)]="disciplina.status" name="status" required>
+      <option [value]="true">Ativo</option>
+      <option [value]="false">Inativo</option>
+    </select>
 
     <button type="submit">Salvar</button>
   </form>

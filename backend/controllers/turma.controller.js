@@ -68,12 +68,63 @@ const createTurma = async (req, res) => {
 
 const updateTurma = async (req, res) => {
   const { id } = req.params;
-  const { nome } = req.body;
+  const {
+    nome,
+    id_disciplina,
+    id_professor,
+    id_sala,
+    dia_semana,
+    horario_inicio,
+    horario_termino,
+  } = req.body;
+
+  if (
+    !nome ||
+    !id_disciplina ||
+    !id_professor ||
+    !id_sala ||
+    !dia_semana ||
+    !horario_inicio ||
+    !horario_termino
+  ) {
+    return res.status(400).json({
+      success: false,
+      message: "Todos os campos são obrigatórios para atualização.",
+    });
+  }
+
   try {
-    await pool.query("UPDATE turmas SET nome = $1 WHERE id = $2", [nome, id]);
-    res.status(200);
+    const result = await pool.query(
+      `UPDATE turmas
+       SET nome = $1, id_disciplina = $2, id_professor = $3, id_sala = $4, 
+           dia_semana = $5, horario_inicio = $6, horario_termino = $7
+       WHERE id = $8`,
+      [
+        nome,
+        id_disciplina,
+        id_professor,
+        id_sala,
+        dia_semana,
+        horario_inicio,
+        horario_termino,
+        id,
+      ]
+    );
+
+    if (result.rowCount === 0) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Turma não encontrada." });
+    }
+
+    res
+      .status(200)
+      .json({ success: true, message: "Turma atualizada com sucesso." });
   } catch (error) {
-    res.status(500).json({ error: "Erro ao atualizar turma" });
+    console.error("Erro ao atualizar turma:", error);
+    res
+      .status(500)
+      .json({ success: false, message: "Erro ao atualizar turma." });
   }
 };
 

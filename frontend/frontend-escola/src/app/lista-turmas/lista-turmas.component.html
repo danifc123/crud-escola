@@ -1,17 +1,34 @@
-<input type="text" placeholder="Pesquisar turma pelo nome" [(ngModel)]="nomePesquisa" (input)="pesquisarTurma()" />
+<input type="text" placeholder="Pesquisar Turma pelo nome" [(ngModel)]="nomePesquisa" (input)="pesquisarTurma()" />
 
 
-<div *ngFor="let turma of turmas">
-  <p><strong>{{ turma.nome }}</strong></p>
-  <p *ngIf="!turma.status" class="instatus">(Instatus)</p>
-
-
-  <!-- Botão de editar e excluir para professores statuss -->
-  <button *ngIf="turma.status" (click)="editarTurma(turma.id)">Editar</button>
-  <button *ngIf="turma.status" (click)="excluirTurma(turma.id)">Excluir</button>
-
-  <!-- Botão de reativar para professores instatuss -->
-  <button *ngIf="!turma.status" (click)="reativarTurma(turma.id)">Reativar</button>
-
-
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Dia da Semana</th>
+      <th>Horário</th>
+      <th>Status</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let turma of turmas">
+      <td>{{ turma.id }}</td>
+      <td>{{ turma.nome }}</td>
+      <td>{{ turma.dia_semana }}</td>
+      <td>{{ turma.horario_inicio }} - {{ turma.horario_termino }}</td>
+      <td>
+        <span *ngIf="turma.status">Ativo</span>
+        <span *ngIf="!turma.status" class="instatus">Inativo</span>
+      </td>
+      <td>
+        <button *ngIf="turma.status" (click)="editarTurma(turma.id)">Editar</button>
+        <button *ngIf="turma.status" (click)="excluirTurma(turma.id)">Excluir</button>
+        <button *ngIf="!turma.status" (click)="reativarTurma(turma.id)">
+          Reativar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

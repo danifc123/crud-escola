@@ -8,27 +8,27 @@ CREATE DATABASE escola;
 CREATE TABLE disciplinas (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
-    codigo VARCHAR(10) NOT NULL,      -- Novo campo: código com letras
-    periodo VARCHAR(50) NOT NULL,     -- Novo campo: período
-    status BOOLEAN DEFAULT TRUE       -- Campo atualizado para "status"
+    codigo VARCHAR(10) NOT NULL,     
+    periodo VARCHAR(50) NOT NULL,    
+    status BOOLEAN DEFAULT TRUE       
 );
 
 -- Tabela de Professores
 CREATE TABLE professores (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
-    cpf VARCHAR(14) NOT NULL UNIQUE,  -- Novo campo: CPF com valor único
-    titulacao VARCHAR(50) NOT NULL,   -- Novo campo: titulação
-    status BOOLEAN DEFAULT TRUE       -- Campo atualizado para "status"
+    cpf VARCHAR(14) NOT NULL UNIQUE,  
+    titulacao VARCHAR(50) NOT NULL,   
+    status BOOLEAN DEFAULT TRUE      
 );
 
 -- Tabela de Salas
 CREATE TABLE salas (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
-    local VARCHAR(100) NOT NULL,      -- Novo campo: local
-    capacidade INT NOT NULL,          -- Novo campo: capacidade
-    status BOOLEAN DEFAULT TRUE       -- Campo atualizado para "status"
+    local VARCHAR(100) NOT NULL,   
+    capacidade INT NOT NULL,        
+    status BOOLEAN DEFAULT TRUE       
 );
 
 -- Tabela de Turmas
@@ -38,8 +38,8 @@ CREATE TABLE turmas (
     id_disciplina INT REFERENCES disciplinas(id),
     id_professor INT REFERENCES professores(id),
     id_sala INT REFERENCES salas(id),
-    dia_semana VARCHAR(20) NOT NULL,         -- Novo campo: dia da semana
-    horario_inicio TIME NOT NULL,            -- Novo campo: horário de início
-    horario_termino TIME NOT NULL,           -- Novo campo: horário de término
-    status BOOLEAN DEFAULT TRUE              -- Campo atualizado para "status"
+    dia_semana VARCHAR(20) NOT NULL,        
+    horario_inicio TIME NOT NULL,            
+    horario_termino TIME NOT NULL,      
+    status BOOLEAN DEFAULT TRUE            
 );

@@ -40,12 +40,37 @@ const createSala = async (req, res) => {
 
 const updateSala = async (req, res) => {
   const { id } = req.params;
-  const { nome } = req.body;
+  const { nome, local, capacidade, status } = req.body;
+
+  if (!nome || !local || !capacidade) {
+    return res.status(400).json({
+      success: false,
+      message: "Nome, Local e Capacidade são obrigatórios para atualização.",
+    });
+  }
+
   try {
-    await pool.query("UPDATE salas SET nome = $1 WHERE id = $2", [nome, id]);
-    res.status(200).json({ message: "Sala atualizada com sucesso" }); // Retorno como JSON
+    const result = await pool.query(
+      `UPDATE salas
+       SET nome = $1, local = $2, capacidade = $3, status = $4
+       WHERE id = $5`,
+      [nome, local, capacidade, status, id]
+    );
+
+    if (result.rowCount === 0) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Sala não encontrada." });
+    }
+
+    res
+      .status(200)
+      .json({ success: true, message: "Sala atualizada com sucesso." });
   } catch (error) {
-    res.status(500).json({ error: "Erro ao atualizar sala" });
+    console.error("Erro ao atualizar sala:", error);
+    res
+      .status(500)
+      .json({ success: false, message: "Erro ao atualizar sala." });
   }
 };
 

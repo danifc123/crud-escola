@@ -1,8 +1,21 @@
-<div *ngIf="sala">
-  <h1>Editar Sala</h1>
-  <input [(ngModel)]="sala.nome" placeholder="Número da sala" />
-  <button (click)="editarSala()">Salvar</button>
-</div>
-<div *ngIf="!sala">
-  <p>Carregando sala...</p>
+<div>
+  <h2>Editar Sala</h2>
+  <form (ngSubmit)="editarSala()">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" [(ngModel)]="sala.nome" name="nome" required />
+
+    <label for="local">Local:</label>
+    <input type="text" id="local" [(ngModel)]="sala.local" name="local" required />
+
+    <label for="capacidade">Capacidade:</label>
+    <input type="number" id="capacidade" [(ngModel)]="sala.capacidade" name="capacidade" required />
+
+    <label for="status">Status:</label>
+    <select id="status" [(ngModel)]="sala.status" name="status" required>
+      <option [value]="true">Ativo</option>
+      <option [value]="false">Inativo</option>
+    </select>
+
+    <button type="submit">Salvar</button>
+  </form>
 </div>

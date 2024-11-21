@@ -36,7 +36,7 @@ export class EditarTurmaComponent implements OnInit {
       () => {
         alert('Turma editada com sucesso!');
         console.log('Turma editada com sucesso!');
-        this.router.navigate(['/editar-turma']);
+        this.router.navigate(['/turmas']); // Ajuste o caminho conforme necessário
       },
       (error) => {
         console.log(error);

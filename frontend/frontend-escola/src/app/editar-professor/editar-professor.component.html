@@ -2,7 +2,19 @@
   <h2>Editar Professor</h2>
   <form (ngSubmit)="editarProfessor()">
     <label for="nome">Nome:</label>
-    <input type="text" id="nome" [(ngModel)]="professor.nome" name="nome" required>
+    <input type="text" id="nome" [(ngModel)]="professor.nome" name="nome" required />
+
+    <label for="cpf">CPF:</label>
+    <input type="text" id="cpf" [(ngModel)]="professor.cpf" name="cpf" required />
+
+    <label for="titulacao">Titulação:</label>
+    <input type="text" id="titulacao" [(ngModel)]="professor.titulacao" name="titulacao" required />
+
+    <label for="status">Status:</label>
+    <select id="status" [(ngModel)]="professor.status" name="status" required>
+      <option [value]="true">Ativo</option>
+      <option [value]="false">Inativo</option>
+    </select>
 
     <button type="submit">Salvar</button>
   </form>

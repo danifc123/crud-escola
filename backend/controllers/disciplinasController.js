@@ -45,14 +45,23 @@ const createDisciplina = async (req, res) => {
 
 const updateDisciplina = async (req, res) => {
   const { id } = req.params;
-  const { nome } = req.body;
+  const { nome, codigo, periodo, status } = req.body;
+
   try {
-    await pool.query("UPDATE disciplinas SET nome = $1 WHERE id = $2", [
-      nome,
-      id,
-    ]);
-    res.status(200);
+    // Query corrigida com vírgulas entre os campos
+    const result = await pool.query(
+      "UPDATE disciplinas SET nome = $1, codigo = $2, periodo = $3, status = $4 WHERE id = $5 RETURNING *",
+      [nome, codigo, periodo, status, id] // Correção na ordem dos parâmetros
+    );
+
+    if (result.rowCount === 0) {
+      // Caso nenhuma disciplina seja atualizada
+      return res.status(404).json({ error: "Disciplina não encontrada" });
+    }
+
+    res.status(200).json(result.rows[0]); // Retorna a disciplina atualizada
   } catch (error) {
+    console.error("Erro ao atualizar disciplina:", error);
     res.status(500).json({ error: "Erro ao atualizar disciplina" });
   }
 };

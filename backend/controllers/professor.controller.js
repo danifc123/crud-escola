@@ -67,34 +67,37 @@ const createProfessor = async (req, res) => {
 // Atualizar um professor
 const updateProfessor = async (req, res) => {
   const { id } = req.params;
-  const { nome } = req.body;
+  const { nome, cpf, titulacao, status } = req.body;
 
-  if (!nome) {
-    return res
-      .status(400)
-      .json({ success: false, message: "Nome é obrigatório" });
+  if (!nome || !cpf || !titulacao) {
+    return res.status(400).json({
+      success: false,
+      message: "Nome, CPF e Titulação são obrigatórios para atualização.",
+    });
   }
 
   try {
     const result = await pool.query(
-      "UPDATE professores SET nome = $1 WHERE id = $2 AND status = TRUE",
-      [nome, id]
+      `UPDATE professores
+       SET nome = $1, cpf = $2, titulacao = $3, status = $4
+       WHERE id = $5`,
+      [nome, cpf, titulacao, status, id]
     );
 
     if (result.rowCount === 0) {
       return res
         .status(404)
-        .json({ success: false, message: "Professor não encontrado" });
+        .json({ success: false, message: "Professor não encontrado." });
     }
 
     res
       .status(200)
-      .json({ success: true, message: "Professor atualizado com sucesso" });
+      .json({ success: true, message: "Professor atualizado com sucesso." });
   } catch (error) {
-    console.error(error);
+    console.error("Erro ao atualizar professor:", error);
     res
       .status(500)
-      .json({ success: false, message: "Erro ao atualizar professor" });
+      .json({ success: false, message: "Erro ao atualizar professor." });
   }
 };
 
