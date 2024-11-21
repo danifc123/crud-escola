@@ -15,7 +15,7 @@ export class DisciplinasService {
   }
 
   editarDisciplina(disciplina: any): Observable<void> {
-    return this.http.put<void>(`${this.baseUrl}/${disciplina.id}`, disciplina); // Corrigido para incluir '/professores/'
+    return this.http.put<void>(`${this.baseUrl}/${disciplina.id}`, disciplina);
   }
 
   excluirDisciplina(id: number): Observable<void> {

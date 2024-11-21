@@ -16,12 +16,12 @@ export class EditarTurmaComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit() {
-    this.idTurma = Number(this.route.snapshot.paramMap.get('id')); // Obtém o ID da URL
+    this.idTurma = Number(this.route.snapshot.paramMap.get('id'));
     this.carregarTurma();
   }
   carregarTurma() {
     this.turmaService.getTurmas().subscribe((data) => {
-      this.turma = data.find((turm: any) => turm.id === this.idTurma); // Filtra o professor pelo ID
+      this.turma = data.find((turm: any) => turm.id === this.idTurma);
     });
   }
 
@@ -36,7 +36,7 @@ export class EditarTurmaComponent implements OnInit {
       () => {
         alert('Turma editada com sucesso!');
         console.log('Turma editada com sucesso!');
-        this.router.navigate(['/turmas']); // Ajuste o caminho conforme necessário
+        this.router.navigate(['/turmas']);
       },
       (error) => {
         console.log(error);

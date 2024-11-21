@@ -9,7 +9,7 @@ import { ProfessorService } from './services/professor.service';
 })
 export class EditarProfessorComponent implements OnInit {
   idProfessor?: number;
-  professor: any = {}; // Modelo para o professor
+  professor: any = {};
 
   constructor(
     private professorService: ProfessorService,
@@ -18,30 +18,28 @@ export class EditarProfessorComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.idProfessor = Number(this.route.snapshot.paramMap.get('id')); // Obtém o ID da URL
-    this.carregarProfessor(); // Carrega os dados do professor
+    this.idProfessor = Number(this.route.snapshot.paramMap.get('id'));
+    this.carregarProfessor();
   }
 
   carregarProfessor() {
-    // Carrega os dados do professor a partir do ID
     this.professorService.getProfessores().subscribe((data) => {
-      this.professor = data.find((prof: any) => prof.id === this.idProfessor); // Filtra o professor pelo ID
+      this.professor = data.find((prof: any) => prof.id === this.idProfessor);
     });
   }
 
   editarProfessor() {
     if (!this.idProfessor) {
       alert('ID do professor não encontrado.');
-      return; // Impede a edição se não houver ID
+      return;
     }
 
-    // Adiciona o ID ao objeto professor antes de enviar
     this.professor.id = this.idProfessor;
 
     this.professorService.editarProfessor(this.professor).subscribe(
       () => {
         alert('Professor editado com sucesso!');
-        this.router.navigate(['/pagina-inicial']); // Redireciona para a lista de professores
+        this.router.navigate(['/pagina-inicial']);
       },
       (error) => {
         console.log(error);

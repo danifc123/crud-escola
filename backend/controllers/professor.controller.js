@@ -1,6 +1,5 @@
 const pool = require("../models/db");
 
-// Buscar professores por nome
 const searchProfessores = async (req, res) => {
   const { nome } = req.query;
 
@@ -19,7 +18,6 @@ const searchProfessores = async (req, res) => {
   }
 };
 
-// Listar todos os professores statuss
 const getProfessores = async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM professores ");
@@ -33,11 +31,9 @@ const getProfessores = async (req, res) => {
   }
 };
 
-// Criar um novo professor
 const createProfessor = async (req, res) => {
   const { nome, cpf, titulacao, status } = req.body;
 
-  // Validação básica
   if (!nome || !cpf || !titulacao) {
     return res.status(400).json({
       success: false,
@@ -64,7 +60,6 @@ const createProfessor = async (req, res) => {
   }
 };
 
-// Atualizar um professor
 const updateProfessor = async (req, res) => {
   const { id } = req.params;
   const { nome, cpf, titulacao, status } = req.body;
@@ -101,7 +96,6 @@ const updateProfessor = async (req, res) => {
   }
 };
 
-// Exclusão lógica de um professor
 const deleteProfessor = async (req, res) => {
   const { id } = req.params;
 
@@ -128,7 +122,6 @@ const deleteProfessor = async (req, res) => {
   }
 };
 
-// Reativar um professor
 const reativarProfessor = async (req, res) => {
   const { id } = req.params;
 

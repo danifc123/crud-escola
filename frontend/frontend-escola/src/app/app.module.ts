@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatTableModule } from '@angular/material/table';
-import { HttpClientModule } from '@angular/common/http'; // Para fazer requisições HTTP
-import { FormsModule } from '@angular/forms'; // Para trabalhar com formulários
-import { AppComponent } from './app.component'; // Componente principal
-import { AppRoutingModule } from './app.routes'; // Importação das rotas
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app.routes';
 
-import { AdicionarProfessorComponent } from './adicionar-professor/adicionar-professor.component'; // Componente para adicionar professor
-import { AdicionarDisciplinaComponent } from './adicionar-disciplina/adicionar-disciplina.component'; // Componente para adicionar disciplina
-import { AdicionarTurmaComponent } from './adicionar-turma/adicionar-turma.component'; // Componente para adicionar turma
-import { AdicionarSalaComponent } from './adicionar-sala/adicionar-sala.component'; // Componente para adicionar sala
+import { AdicionarProfessorComponent } from './adicionar-professor/adicionar-professor.component';
+import { AdicionarDisciplinaComponent } from './adicionar-disciplina/adicionar-disciplina.component';
+import { AdicionarTurmaComponent } from './adicionar-turma/adicionar-turma.component';
+import { AdicionarSalaComponent } from './adicionar-sala/adicionar-sala.component';
 
-import { ListaProfessoresComponent } from './lista-professores/lista-professores.component'; // Componente para lista de professores
-import { ListaDisciplinasComponent } from './lista-disciplinas/lista-disciplinas.component'; // Componente para lista de disciplinas
-import { ListaTurmasComponent } from './lista-turmas/lista-turmas.component'; // Componente para lista de turmas
-import { ListaSalasComponent } from './lista-salas/lista-salas.component'; // Componente para lista de salas
+import { ListaProfessoresComponent } from './lista-professores/lista-professores.component';
+import { ListaDisciplinasComponent } from './lista-disciplinas/lista-disciplinas.component';
+import { ListaTurmasComponent } from './lista-turmas/lista-turmas.component';
+import { ListaSalasComponent } from './lista-salas/lista-salas.component';
 
 import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.component';
 
@@ -52,6 +52,6 @@ import { EditarTurmaComponent } from './editar-turma/editar-turma.component';
     AppRoutingModule,
   ],
   providers: [],
-  bootstrap: [AppComponent], // Componente raiz da aplicação
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -85,7 +85,7 @@ export class AdicionarTurmaComponent implements OnInit {
     this.turmaService.adicionarTurma(this.turma).subscribe(
       () => {
         alert('Turma adicionada com sucesso!');
-        this.router.navigate(['/pagina-inicial']); // Redirecionar para a lista de turmas
+        this.router.navigate(['/pagina-inicial']);
       },
       (error) => {
         alert('Erro ao adicionar turma!');

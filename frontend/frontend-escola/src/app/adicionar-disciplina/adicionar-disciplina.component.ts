@@ -9,7 +9,7 @@ import { Validators } from '@angular/forms';
 })
 export class AdicionarDisciplinaComponent {
   disciplina = { nome: '', codigo: '', periodo: '', status: true };
-  erroCodigo = ''; // Para armazenar mensagens de erro
+  erroCodigo = '';
   constructor(private dataService: DataService, private router: Router) {}
 
   verificarCodigo() {
@@ -19,7 +19,6 @@ export class AdicionarDisciplinaComponent {
   }
 
   adicionarDisciplina() {
-    // Validação do limite de caracteres
     if (this.disciplina.codigo.length > 10) {
       this.erroCodigo = 'O código não pode ter mais de 10 caracteres.';
       return;
@@ -29,7 +28,7 @@ export class AdicionarDisciplinaComponent {
     this.dataService.addDisciplina(this.disciplina).subscribe(
       () => {
         alert('Disciplina adicionada com sucesso!');
-        this.router.navigate(['/pagina-inicial']); // Redirecionar para a lista de disciplinas
+        this.router.navigate(['/pagina-inicial']);
       },
       (error) => {
         console.error('Erro ao adicionar disciplina', error);

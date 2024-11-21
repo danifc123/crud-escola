@@ -16,7 +16,6 @@ export class AppComponent {
   ngOnInit() {
     this.carregarInicio();
 
-    // Monitora a navegação para esconder ou mostrar a tabela
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.verificarRota(event.urlAfterRedirects);
@@ -31,11 +30,10 @@ export class AppComponent {
     'sala',
     'status',
   ];
-  pesquisaResultados: any[] = []; // Resultados da pesquisa geral
-  nomePesquisa: string = ''; // Termo de pesquisa
+  pesquisaResultados: any[] = [];
+  nomePesquisa: string = '';
 
   verificarRota(url: string) {
-    // Rotas específicas onde a tabela deve desaparecer
     const rotasOcultarTabela = [
       '/pagina-inicial',
       '/adicionar-professor',
@@ -52,17 +50,16 @@ export class AppComponent {
       '/professores',
     ];
 
-    // Checa se a URL atual corresponde às rotas ou padrões dinâmicos
     const rotaComParametroId =
-      /\/editar-(sala|disciplina|professor|turma)\/\d+$/; // Ex.: '/editar-sala/123'
+      /\/editar-(sala|disciplina|professor|turma)\/\d+$/;
     this.mostrarTabela =
       !rotasOcultarTabela.includes(url) && !rotaComParametroId.test(url);
   }
 
   carregarInicio() {
     this.paginaInicial.getInicio().subscribe((data) => {
-      console.log('Dados recebidos:', data); // Verifique o formato
-      this.pesquisaResultados = data; // Popula a tabela
+      console.log('Dados recebidos:', data);
+      this.pesquisaResultados = data;
     });
   }
   pesquisarProfessor() {
@@ -74,7 +71,7 @@ export class AppComponent {
     this.paginaInicial.pesquisarProfessor(this.nomePesquisa).subscribe(
       (resultados) => {
         console.log('Resultados da pesquisa:', resultados);
-        this.pesquisaResultados = resultados; // Atualiza a tabela com os dados do professor
+        this.pesquisaResultados = resultados;
       },
       (error) => {
         alert('Erro ao buscar professor: ' + error.message);
@@ -82,6 +79,6 @@ export class AppComponent {
     );
   }
   ngOnDestroy(): void {
-    this.displayedColumns = []; // Limpa os dados da tabela
+    this.displayedColumns = [];
   }
 }

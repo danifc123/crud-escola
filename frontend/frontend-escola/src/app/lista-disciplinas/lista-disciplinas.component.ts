@@ -32,7 +32,7 @@ export class ListaDisciplinasComponent {
       this.disciplinasService.excluirDisciplina(id).subscribe(
         () => {
           alert('Disciplina excluído com sucesso!');
-          this.carregarDisciplinas(); // Atualiza a lista de professores após a exclusão
+          this.carregarDisciplinas();
         },
         (error) => {
           alert('Erro ao excluir disciplina: ' + error.message);
@@ -44,7 +44,7 @@ export class ListaDisciplinasComponent {
     this.disciplinasService.reativarDisciplina(id).subscribe(
       () => {
         alert('Disciplina reativado com sucesso!');
-        this.carregarDisciplinas(); // Recarrega a lista de professores
+        this.carregarDisciplinas();
       },
       (error) => {
         alert('Erro ao reativar Disciplina: ' + error.message);
@@ -52,10 +52,10 @@ export class ListaDisciplinasComponent {
     );
   }
 
-  nomePesquisa: string = ''; // Campo para armazenar o termo de pesquisa
+  nomePesquisa: string = '';
   pesquisarDisciplinas() {
     if (this.nomePesquisa.trim() === '') {
-      this.pesquisarDisciplinas(); // Se o campo estiver vazio, carregue todos os professores
+      this.pesquisarDisciplinas();
     } else {
       this.disciplinasService.pesquisarDisciplinas(this.nomePesquisa).subscribe(
         (data) => {

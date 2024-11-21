@@ -31,7 +31,7 @@ export class ListaTurmasComponent {
       this.turmaService.excluirTurma(id).subscribe(
         () => {
           alert(' Turma excluída com sucesso!');
-          this.carregarTurma(); // Atualiza a lista de professores após a exclusão
+          this.carregarTurma();
         },
         (error) => {
           alert('Erro ao excluir turma: ' + error.message);
@@ -51,11 +51,9 @@ export class ListaTurmasComponent {
     );
   }
 
-  // Campo para armazenar o termo de pesquisa
   pesquisarTurma() {
     if (this.nomePesquisa.trim() === '') {
       this.carregarTurma();
-      // Se o campo estiver vazio, carregue todos os professores
     } else {
       this.turmaService.pesquisarTurmas(this.nomePesquisa).subscribe(
         (data) => {

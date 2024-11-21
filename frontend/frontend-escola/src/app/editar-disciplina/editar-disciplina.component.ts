@@ -17,20 +17,20 @@ export class EditarDisciplinaComponent {
   ) {}
 
   ngOnInit() {
-    this.idDisciplina = Number(this.route.snapshot.paramMap.get('id')); // Obtém o ID da URL
+    this.idDisciplina = Number(this.route.snapshot.paramMap.get('id'));
     this.carregarDisciplina();
   }
 
   carregarDisciplina() {
     this.disciplinasService.getDisciplinas().subscribe((data) => {
-      this.disciplina = data.find((disc: any) => disc.id === this.idDisciplina); // Filtra o professor pelo ID
+      this.disciplina = data.find((disc: any) => disc.id === this.idDisciplina);
     });
   }
 
   editarDisciplina() {
     if (!this.idDisciplina) {
       alert('ID do disciplina não encontrado.');
-      return; // Impede a edição se não houver ID
+      return;
     }
 
     this.disciplina.id = this.idDisciplina;

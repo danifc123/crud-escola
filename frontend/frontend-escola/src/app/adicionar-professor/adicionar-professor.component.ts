@@ -36,13 +36,11 @@ export class AdicionarProfessorComponent {
       return false;
     }
 
-    // Remove os caracteres de formatação para validar os dígitos
     const cpfLimpo = cpf.replace(/[^\d]+/g, '');
     if (cpfLimpo.length !== 11 || /^(\d)\1{10}$/.test(cpfLimpo)) {
       return false;
     }
 
-    // Validação dos dígitos verificadores
     let soma = 0;
     let resto;
 

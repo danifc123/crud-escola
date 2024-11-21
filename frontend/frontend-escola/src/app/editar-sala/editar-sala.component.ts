@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EditarSalaComponent {
   idSala?: number;
-  sala: any = {}; // Modelo para o professor
+  sala: any = {};
 
   constructor(
     private salaService: salaService,
@@ -18,20 +18,20 @@ export class EditarSalaComponent {
   ) {}
 
   ngOnInit() {
-    this.idSala = Number(this.route.snapshot.paramMap.get('id')); // Obtém o ID da URL
+    this.idSala = Number(this.route.snapshot.paramMap.get('id'));
     this.carregarSala();
   }
 
   carregarSala() {
     this.salaService.getSalas().subscribe((data) => {
-      this.sala = data.find((disc: any) => disc.id === this.idSala); // Filtra o professor pelo ID
+      this.sala = data.find((disc: any) => disc.id === this.idSala);
     });
   }
 
   editarSala() {
     if (!this.idSala) {
       alert('ID do sala não encontrado.');
-      return; // Impede a edição se não houver ID
+      return;
     }
 
     this.sala.id = this.idSala;
@@ -39,7 +39,7 @@ export class EditarSalaComponent {
     this.salaService.editarSala(this.sala).subscribe(
       () => {
         alert('Sala editado com sucesso!');
-        this.router.navigate(['/pagina-inicial']); // Redireciona para a lista de sala
+        this.router.navigate(['/pagina-inicial']);
       },
       (error) => {
         console.log(error);

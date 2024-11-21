@@ -9,19 +9,19 @@ import { ProfessorService } from '../editar-professor/services/professor.service
 })
 export class ListaProfessoresComponent implements OnInit {
   professores: any[] = [];
+  nomePesquisa: string = '';
 
   constructor(
     private router: Router,
-    private professorService: ProfessorService // Injeção do serviço de professores
+    private professorService: ProfessorService
   ) {}
 
-  // lista-professores.component.ts
   ngOnInit() {
     this.carregarProfessores();
   }
   carregarProfessores() {
     this.professorService.getProfessores().subscribe((data) => {
-      console.log('Dados recebidos:', data); // Verifique o formato
+      console.log('Dados recebidos:', data);
       this.professores = data;
     });
   }
@@ -34,7 +34,7 @@ export class ListaProfessoresComponent implements OnInit {
       this.professorService.excluirProfessor(id).subscribe(
         () => {
           alert('Professor excluído com sucesso!');
-          this.carregarProfessores(); // Atualiza a lista de professores após a exclusão
+          this.carregarProfessores();
         },
         (error) => {
           alert('Erro ao excluir professor: ' + error.message);
@@ -46,7 +46,7 @@ export class ListaProfessoresComponent implements OnInit {
     this.professorService.reativarProfessor(id).subscribe(
       () => {
         alert('Professor reativado com sucesso!');
-        this.carregarProfessores(); // Recarrega a lista de professores
+        this.carregarProfessores();
       },
       (error) => {
         alert('Erro ao reativar professor: ' + error.message);
@@ -54,10 +54,9 @@ export class ListaProfessoresComponent implements OnInit {
     );
   }
 
-  nomePesquisa: string = ''; // Campo para armazenar o termo de pesquisa
   pesquisarProfessores() {
     if (this.nomePesquisa.trim() === '') {
-      this.carregarProfessores(); // Se o campo estiver vazio, carregue todos os professores
+      this.carregarProfessores();
     } else {
       this.professorService.pesquisarProfessores(this.nomePesquisa).subscribe(
         (data) => {

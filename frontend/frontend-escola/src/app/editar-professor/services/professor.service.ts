@@ -6,34 +6,27 @@ import { map, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProfessorService {
-  private baseUrl = 'http://localhost:3000/professores'; // Corrigido para incluir '/professores'
+  private baseUrl = 'http://localhost:3000/professores';
 
   constructor(private http: HttpClient) {}
 
-  // Obter todos os professores
   getProfessores(): Observable<any[]> {
-    return this.http.get<any>(this.baseUrl).pipe(
-      map((response: any) => response.data) // Agora acessa o array "data"
-    );
+    return this.http
+      .get<any>(this.baseUrl)
+      .pipe(map((response: any) => response.data));
   }
-
-
-  // Editar professor
   editarProfessor(professor: any): Observable<void> {
-    return this.http.put<void>(`${this.baseUrl}/${professor.id}`, professor); // Corrigido para incluir '/professores/'
+    return this.http.put<void>(`${this.baseUrl}/${professor.id}`, professor);
   }
 
-  // Excluir professor
   excluirProfessor(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
 
-  // Reativar professor
   reativarProfessor(id: number): Observable<any> {
     return this.http.put<void>(`${this.baseUrl}/${id}/reativar`, {});
   }
 
-  // Pesquisar professores
   pesquisarProfessores(nome: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/search`, { params: { nome } });
   }

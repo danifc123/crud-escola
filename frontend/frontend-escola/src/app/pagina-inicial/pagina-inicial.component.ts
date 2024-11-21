@@ -18,13 +18,13 @@ export class PaginaInicialComponent {
     'sala',
     'status',
   ];
-  pesquisaResultados: any[] = []; // Resultados da pesquisa geral
-  nomePesquisa: string = ''; // Termo de pesquisa
+  pesquisaResultados: any[] = [];
+  nomePesquisa: string = '';
 
   carregarInicio() {
     this.paginaInicial.getInicio().subscribe((data) => {
-      console.log('Dados recebidos:', data); // Verifique o formato
-      this.pesquisaResultados = data; // Popula a tabela
+      console.log('Dados recebidos:', data);
+      this.pesquisaResultados = data;
     });
   }
   pesquisarProfessor() {
@@ -36,7 +36,7 @@ export class PaginaInicialComponent {
     this.paginaInicial.pesquisarProfessor(this.nomePesquisa).subscribe(
       (resultados) => {
         console.log('Resultados da pesquisa:', resultados);
-        this.pesquisaResultados = resultados; // Atualiza a tabela com os dados do professor
+        this.pesquisaResultados = resultados;
       },
       (error) => {
         alert('Erro ao buscar professor: ' + error.message);

@@ -10,12 +10,8 @@ import { salaService } from '../editar-professor/services/salas.services';
 export class ListaSalasComponent {
   salas: any[] = [];
 
-  constructor(
-    private router: Router,
-    private salaService: salaService // Injeção do serviço de professores
-  ) {}
+  constructor(private router: Router, private salaService: salaService) {}
 
-  // lista-professores.component.ts
   ngOnInit() {
     this.carregarSalas();
   }
@@ -46,7 +42,7 @@ export class ListaSalasComponent {
     this.salaService.reativarSala(id).subscribe(
       () => {
         alert('Sala reativado com sucesso!');
-        this.carregarSalas(); // Recarrega a lista de professores
+        this.carregarSalas();
       },
       (error) => {
         console.error(error);
@@ -56,10 +52,10 @@ export class ListaSalasComponent {
     );
   }
 
-  nomePesquisa: string = ''; // Campo para armazenar o termo de pesquisa
+  nomePesquisa: string = '';
   pesquisarSalas() {
     if (this.nomePesquisa.trim() === '') {
-      this.carregarSalas(); // Se o campo estiver vazio, carregue todos os professores
+      this.carregarSalas();
     } else {
       this.salaService.pesquisarSalas(this.nomePesquisa).subscribe(
         (data) => {

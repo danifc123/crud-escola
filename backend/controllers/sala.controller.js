@@ -30,8 +30,6 @@ const createSala = async (req, res) => {
       message: "Sala criado com sucesso",
       data: result.rows[0],
     });
-
-    // Respondendo com a nova sala criada
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, message: "Erro ao criar salas" });
