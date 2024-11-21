@@ -10,11 +10,7 @@
     <label for="capacidade">Capacidade:</label>
     <input type="number" id="capacidade" [(ngModel)]="sala.capacidade" name="capacidade" required />
 
-    <label for="status">Status:</label>
-    <select id="status" [(ngModel)]="sala.status" name="status" required>
-      <option [value]="true">Ativo</option>
-      <option [value]="false">Inativo</option>
-    </select>
+
 
     <button type="submit">Salvar</button>
   </form>

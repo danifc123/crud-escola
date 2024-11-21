@@ -10,11 +10,6 @@
     <label for="titulacao">Titulação:</label>
     <input type="text" id="titulacao" [(ngModel)]="professor.titulacao" name="titulacao" required />
 
-    <label for="status">Status:</label>
-    <select id="status" [(ngModel)]="professor.status" name="status" required>
-      <option [value]="true">Ativo</option>
-      <option [value]="false">Inativo</option>
-    </select>
 
     <button type="submit">Salvar</button>
   </form>

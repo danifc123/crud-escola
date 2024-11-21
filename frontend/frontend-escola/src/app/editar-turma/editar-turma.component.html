@@ -3,10 +3,18 @@
   <form (ngSubmit)="editarTurma()">
     <label for="nome">Nome:</label>
     <input type="text" id="nome" [(ngModel)]="turma.nome" name="nome" required />
-
-    <label for="dia_semana">Dia da Semana:</label>
-    <input type="text" id="dia_semana" [(ngModel)]="turma.dia_semana" name="dia_semana" required />
-
+    <br>
+    <div>
+      <label for="dia_semana">Dia da Semana:</label>
+      <select id="dia_semana" [(ngModel)]="turma.dia_semana" name="dia_semana" required>
+        <option value="Segunda-feira">Segunda-feira</option>
+        <option value="Terça-feira">Terça-feira</option>
+        <option value="Quarta-feira">Quarta-feira</option>
+        <option value="Quinta-feira">Quinta-feira</option>
+        <option value="Sexta-feira">Sexta-feira</option>
+      </select>
+    </div>
+    <br>
     <label for="horario_inicio">Horário Início:</label>
     <input type="time" id="horario_inicio" [(ngModel)]="turma.horario_inicio" name="horario_inicio" required />
 

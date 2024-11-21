@@ -10,11 +10,6 @@
     <label for="periodo">Período:</label>
     <input type="text" id="periodo" [(ngModel)]="disciplina.periodo" name="periodo" required />
 
-    <label for="status">Status:</label>
-    <select id="status" [(ngModel)]="disciplina.status" name="status" required>
-      <option [value]="true">Ativo</option>
-      <option [value]="false">Inativo</option>
-    </select>
 
     <button type="submit">Salvar</button>
   </form>
