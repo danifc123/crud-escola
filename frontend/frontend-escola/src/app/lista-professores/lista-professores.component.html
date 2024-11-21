@@ -28,9 +28,7 @@
         <button *ngIf="professor.status" (click)="excluirProfessor(professor.id)">
           Excluir
         </button>
-        <button *ngIf="!professor.status" (click)="reativarProfessor(professor.id)">
-          Reativar
-        </button>
+        <a routerLink="/reativar-professor"><button>Reativar Professores</button></a>
       </td>
     </tr>
   </tbody>

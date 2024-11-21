@@ -25,9 +25,7 @@
       <td>
         <button *ngIf="turma.status" (click)="editarTurma(turma.id)">Editar</button>
         <button *ngIf="turma.status" (click)="excluirTurma(turma.id)">Excluir</button>
-        <button *ngIf="!turma.status" (click)="reativarTurma(turma.id)">
-          Reativar
-        </button>
+        <a routerLink="/reativar-turma"><button>Reativar Turmas</button></a>
       </td>
     </tr>
   </tbody>

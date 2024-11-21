@@ -23,6 +23,11 @@ import { EditarDisciplinaComponent } from './editar-disciplina/editar-disciplina
 import { EditarSalaComponent } from './editar-sala/editar-sala.component';
 import { EditarTurmaComponent } from './editar-turma/editar-turma.component';
 
+import { ReativarDisciplinaComponent } from './reativar-disciplina/reativar-disciplina.component';
+import { ReativarProfessorComponent } from './reativar-professor/reativar-professor.component';
+import { ReativarTurmaComponent } from './reativar-turma/reativar-turma.component';
+import { ReativarSalaComponent } from './reativar-sala/reativar-sala.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +48,12 @@ import { EditarTurmaComponent } from './editar-turma/editar-turma.component';
     EditarDisciplinaComponent,
     EditarSalaComponent,
     EditarTurmaComponent,
+
+    ReativarDisciplinaComponent,
+    ReativarProfessorComponent,
+    ReativarDisciplinaComponent,
+    ReativarTurmaComponent,
+    ReativarSalaComponent,
   ],
   imports: [
     BrowserModule,

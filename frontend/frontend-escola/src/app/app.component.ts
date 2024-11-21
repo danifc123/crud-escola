@@ -8,6 +8,7 @@ import { NavigationEnd, Router } from '@angular/router';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  title = 'frontend-escola';
   mostrarTabela: boolean = true;
   constructor(
     private paginaInicial: PaginaInicialService,
@@ -48,6 +49,10 @@ export class AppComponent {
       '/turmas',
       '/salas',
       '/professores',
+      '/reativar-disciplina',
+      '/reativar-turma',
+      '/reativar-sala',
+      '/reativar-professor',
     ];
 
     const rotaComParametroId =

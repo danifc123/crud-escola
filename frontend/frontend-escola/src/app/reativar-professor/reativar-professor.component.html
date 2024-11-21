@@ -1,0 +1,28 @@
+<h2>Reativar Professores</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>cpf</th>
+      <th>Titução</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let professor of professoresInativos">
+      <td>{{ professor.id }}</td>
+      <td>{{ professor.nome }}</td>
+      <td>{{ professor.cpf }}</td>
+      <td>{{ professor.titulacao }}</td>
+      <td>
+        <button (click)="reativarProfessor(professor.id)">Reativar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p *ngIf="professoresInativos.length === 0">
+  Nenhum professor inativo encontrado.
+</p>

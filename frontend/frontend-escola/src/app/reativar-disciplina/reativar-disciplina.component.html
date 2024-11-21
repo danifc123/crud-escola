@@ -1,0 +1,29 @@
+<h2>Reativar Disciplinas</h2>
+
+<!-- Tabela de Disciplinas Inativas -->
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Código</th>
+      <th>Período</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let disciplina of disciplinasInativas">
+      <td>{{ disciplina.id }}</td>
+      <td>{{ disciplina.nome }}</td>
+      <td>{{ disciplina.codigo }}</td>
+      <td>{{ disciplina.periodo }}</td>
+      <td>
+        <button (click)="reativarDisciplina(disciplina.id)">Reativar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p *ngIf="disciplinasInativas.length === 0">
+  Nenhuma disciplina inativa encontrada.
+</p>

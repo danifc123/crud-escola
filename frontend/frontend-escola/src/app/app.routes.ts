@@ -13,6 +13,10 @@ import { EditarProfessorComponent } from './editar-professor/editar-professor.co
 import { EditarDisciplinaComponent } from './editar-disciplina/editar-disciplina.component';
 import { EditarSalaComponent } from './editar-sala/editar-sala.component';
 import { EditarTurmaComponent } from './editar-turma/editar-turma.component';
+import { ReativarDisciplinaComponent } from './reativar-disciplina/reativar-disciplina.component';
+import { ReativarProfessorComponent } from './reativar-professor/reativar-professor.component';
+import { ReativarTurmaComponent } from './reativar-turma/reativar-turma.component';
+import { ReativarSalaComponent } from './reativar-sala/reativar-sala.component';
 
 const routes: Routes = [
   { path: 'pagina-inicial', component: PaginaInicialComponent },
@@ -31,6 +35,11 @@ const routes: Routes = [
   { path: 'editar-disciplina/:id', component: EditarDisciplinaComponent },
   { path: 'editar-sala/:id', component: EditarSalaComponent },
   { path: 'editar-turma/:id', component: EditarTurmaComponent },
+
+  { path: 'reativar-disciplina', component: ReativarDisciplinaComponent },
+  { path: 'reativar-professor', component: ReativarProfessorComponent },
+  { path: 'reativar-turma', component: ReativarTurmaComponent },
+  { path: 'reativar-sala', component: ReativarSalaComponent },
 ];
 
 @NgModule({

@@ -1,0 +1,28 @@
+<h2>Reativar Turmas</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Dia da Semana</th>
+      <th>Horário</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let turma of turmasInativas">
+      <td>{{ turma.id }}</td>
+      <td>{{ turma.nome }}</td>
+      <td>{{ turma.dia_semana }}</td>
+      <td>{{ turma.horario_inicio }} - {{ turma.horario_fim }}</td>
+      <td>
+        <button (click)="reativarTurma(turma.id)">Reativar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p *ngIf="turmasInativas.length === 0">
+  Nenhuma turma inativa encontrada.
+</p>
