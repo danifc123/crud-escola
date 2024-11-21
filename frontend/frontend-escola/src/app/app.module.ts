@@ -27,6 +27,7 @@ import { ReativarDisciplinaComponent } from './reativar-disciplina/reativar-disc
 import { ReativarProfessorComponent } from './reativar-professor/reativar-professor.component';
 import { ReativarTurmaComponent } from './reativar-turma/reativar-turma.component';
 import { ReativarSalaComponent } from './reativar-sala/reativar-sala.component';
+import { AdicionarAlunoComponent } from './adicionar-aluno/adicionar-aluno.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,8 @@ import { ReativarSalaComponent } from './reativar-sala/reativar-sala.component';
     ReativarDisciplinaComponent,
     ReativarTurmaComponent,
     ReativarSalaComponent,
+
+    AdicionarAlunoComponent,
   ],
   imports: [
     BrowserModule,

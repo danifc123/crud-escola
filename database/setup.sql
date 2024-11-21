@@ -43,3 +43,10 @@ CREATE TABLE turmas (
     horario_termino TIME NOT NULL,      
     status BOOLEAN DEFAULT TRUE            
 );
+CREATE TABLE alunos (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    data_nascimento DATE NOT NULL,
+    status BOOLEAN DEFAULT TRUE
+);

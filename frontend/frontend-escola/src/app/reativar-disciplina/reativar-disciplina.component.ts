@@ -19,7 +19,7 @@ export class ReativarDisciplinaComponent implements OnInit {
     this.disciplinasService.getDisciplinas().subscribe((data) => {
       this.disciplinasInativas = data.filter(
         (disciplina: any) => !disciplina.status
-      ); // Filtra apenas as disciplinas inativas
+      );
     });
   }
 
@@ -28,7 +28,7 @@ export class ReativarDisciplinaComponent implements OnInit {
       this.disciplinasService.reativarDisciplina(id).subscribe(
         () => {
           alert('Disciplina reativada com sucesso!');
-          this.carregarDisciplinasInativas(); // Recarrega a lista de disciplinas inativas
+          this.carregarDisciplinasInativas();
         },
         (error) => {
           alert('Erro ao reativar disciplina: ' + error.message);

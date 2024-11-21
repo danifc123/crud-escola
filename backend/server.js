@@ -8,6 +8,7 @@ const professoresController = require("../backend/controllers/professor.controll
 const turmasController = require("../backend/controllers/turma.controller");
 const salasController = require("../backend/controllers/sala.controller.js");
 const paginainIcialController = require("../backend/controllers/paginaInicial.controller.js");
+const alunosController = require("./controllers/alunos.controller");
 
 const app = express();
 const port = 3000;
@@ -20,6 +21,11 @@ app.get(
   "/pagina-inicial/professor",
   paginainIcialController.getProfessorByName
 );
+
+app.post("/alunos", alunosController.createAluno);
+app.put("/alunos/:id", alunosController.updateAluno);
+app.delete("/alunos/:id", alunosController.deleteAluno);
+app.get("/alunos/search", alunosController.searchAlunos);
 
 app.get("/disciplinas", disciplinasController.getDisciplinas);
 app.post("/disciplinas", disciplinasController.createDisciplina);

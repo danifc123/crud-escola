@@ -35,7 +35,7 @@ export class EditarProfessorComponent implements OnInit {
       return;
     }
     if (!this.validarCPF(this.professor.cpf)) {
-      this.cpfValido = false; // Indica que o CPF está inválido
+      this.cpfValido = false;
       alert('CPF inválido. Verifique o valor e tente novamente.');
       return;
     }

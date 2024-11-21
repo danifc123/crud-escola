@@ -17,6 +17,7 @@ import { ReativarDisciplinaComponent } from './reativar-disciplina/reativar-disc
 import { ReativarProfessorComponent } from './reativar-professor/reativar-professor.component';
 import { ReativarTurmaComponent } from './reativar-turma/reativar-turma.component';
 import { ReativarSalaComponent } from './reativar-sala/reativar-sala.component';
+import { AdicionarAlunoComponent } from './adicionar-aluno/adicionar-aluno.component';
 
 const routes: Routes = [
   { path: 'pagina-inicial', component: PaginaInicialComponent },
@@ -40,6 +41,8 @@ const routes: Routes = [
   { path: 'reativar-professor', component: ReativarProfessorComponent },
   { path: 'reativar-turma', component: ReativarTurmaComponent },
   { path: 'reativar-sala', component: ReativarSalaComponent },
+
+  { path: 'adicionar-aluno', component: AdicionarAlunoComponent },
 ];
 
 @NgModule({
