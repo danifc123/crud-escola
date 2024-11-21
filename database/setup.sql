@@ -27,7 +27,7 @@ CREATE TABLE salas (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     local VARCHAR(100) NOT NULL,   
-    capacidade INT NOT NULL,        
+    capacidade VARCHAR(100) NOT NULL,        
     status BOOLEAN DEFAULT TRUE       
 );
 

@@ -63,7 +63,7 @@ export class ListaProfessoresComponent implements OnInit {
           this.professores = data;
         },
         (error) => {
-          alert('Erro ao buscar professores: ' + error.message);
+          alert('Erro ao buscar turmas: ' + error.message);
         }
       );
     }

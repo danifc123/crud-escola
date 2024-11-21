@@ -5,11 +5,11 @@ const searchProfessores = async (req, res) => {
 
   try {
     const result = await pool.query(
-      "SELECT * FROM professores WHERE status = TRUE AND nome ILIKE $1",
+      "SELECT * FROM professores WHERE nome ILIKE $1",
       [`%${nome}%`]
     );
 
-    res.json({ success: true, data: result.rows });
+    res.json(result.rows);
   } catch (error) {
     console.error(error);
     res

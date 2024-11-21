@@ -173,7 +173,7 @@ const searchTurmas = async (req, res) => {
     res.json(result.rows);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Erro ao buscar professores" });
+    res.status(500).json({ error: "Erro ao buscar turmas" });
   }
 };
 
