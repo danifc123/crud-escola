@@ -28,6 +28,8 @@ import { ReativarProfessorComponent } from './reativar-professor/reativar-profes
 import { ReativarTurmaComponent } from './reativar-turma/reativar-turma.component';
 import { ReativarSalaComponent } from './reativar-sala/reativar-sala.component';
 import { AdicionarAlunoComponent } from './adicionar-aluno/adicionar-aluno.component';
+import { EditarAlunoComponent } from './editar-aluno/editar-aluno.component';
+import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { AdicionarAlunoComponent } from './adicionar-aluno/adicionar-aluno.compo
     AdicionarTurmaComponent,
     AdicionarProfessorComponent,
     AdicionarSalaComponent,
+    AdicionarAlunoComponent,
 
     PaginaInicialComponent,
 
@@ -44,19 +47,19 @@ import { AdicionarAlunoComponent } from './adicionar-aluno/adicionar-aluno.compo
     ListaProfessoresComponent,
     ListaDisciplinasComponent,
     ListaTurmasComponent,
+    ListaAlunosComponent,
 
     EditarProfessorComponent,
     EditarDisciplinaComponent,
     EditarSalaComponent,
     EditarTurmaComponent,
+    EditarAlunoComponent,
 
     ReativarDisciplinaComponent,
     ReativarProfessorComponent,
     ReativarDisciplinaComponent,
     ReativarTurmaComponent,
     ReativarSalaComponent,
-
-    AdicionarAlunoComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,27 @@
+<h2>Lista de Alunos</h2>
+<input type="text" placeholder="Pesquisar Aluno pelo nome" [(ngModel)]="nomePesquisa" (input)="pesquisarAlunos()" />
+
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Data de Nascimento</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let aluno of alunos">
+      <td>{{ aluno.id }}</td>
+      <td>{{ aluno.nome }}</td>
+      <td>{{ aluno.email }}</td>
+      <td>{{ aluno.data_nascimento | date: 'dd/MM/yyyy' }}</td>
+      <td>
+        <span *ngIf="aluno.status">Ativo</span>
+        <span *ngIf="!aluno.status" class="instatus">Inativo</span>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,5 +1,13 @@
 const pool = require("../models/db.js");
 
+const getAlunos = async (req, res) => {
+  try {
+    const result = await pool.query("SELECT * FROM alunos ");
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Erro ao buscar alunos" });
+  }
+};
 // 1. Salvar aluno
 const createAluno = async (req, res) => {
   const { nome, email, data_nascimento } = req.body;
@@ -76,4 +84,5 @@ module.exports = {
   updateAluno,
   deleteAluno,
   searchAlunos,
+  getAlunos,
 };

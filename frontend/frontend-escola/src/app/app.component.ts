@@ -53,6 +53,9 @@ export class AppComponent {
       '/reativar-turma',
       '/reativar-sala',
       '/reativar-professor',
+      '/alunos',
+      '/adicionar-aluno',
+      '/editar-aluno',
     ];
 
     const rotaComParametroId =
