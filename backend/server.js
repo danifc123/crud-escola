@@ -9,7 +9,7 @@ const turmasController = require("../backend/controllers/turma.controller");
 const salasController = require("../backend/controllers/sala.controller.js");
 const paginainIcialController = require("../backend/controllers/paginaInicial.controller.js");
 const alunosController = require("./controllers/alunos.controller");
-
+const turmasHasAlunosController = require("./controllers/turmasHasAlunos.controller");
 const app = express();
 const port = 3000;
 

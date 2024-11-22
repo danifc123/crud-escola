@@ -3,7 +3,7 @@ const pool = require("../models/db.js");
 const getInicio = async (req, res) => {
   try {
     const result = await pool.query(
-      "SELECT p.nome AS nome_professor, t.nome AS nome_turma, p.titulacao AS titulacao_professor, s.nome AS nome_sala, p.status AS status_professor FROM professores p JOIN turmas t ON t.id_professor = p.id JOIN salas s ON s.id = t.id_sala"
+      " SELECT  p.nome AS nome_professor,  t.nome AS nome_turma,  d.nome AS nome_disciplina, s.nome AS nome_sala, p.status AS status_professor FROM professores p JOIN turmas t ON t.id_professor = p.id JOIN salas s ON s.id = t.id_sala JOIN disciplinas d ON d.id = t.id_disciplina "
     );
     res.json(result.rows);
   } catch (error) {
