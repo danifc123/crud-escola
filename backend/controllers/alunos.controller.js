@@ -80,10 +80,29 @@ const searchAlunos = async (req, res) => {
   }
 };
 
+const reativarAluno = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await pool.query(
+      "UPDATE alunos SET status = TRUE WHERE id = $1",
+      [id]
+    );
+
+    if (result.rowCount === 0) {
+      return res.status(404).json({ error: "alunos não encontrado" });
+    }
+
+    res.json("alunos reativado com sucesso");
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao reativar alunos" });
+  }
+};
+
 module.exports = {
   createAluno,
   updateAluno,
   deleteAluno,
   searchAlunos,
   getAlunos,
+  reativarAluno,
 };

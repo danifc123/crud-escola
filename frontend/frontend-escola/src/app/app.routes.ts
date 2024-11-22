@@ -20,6 +20,7 @@ import { ReativarSalaComponent } from './reativar-sala/reativar-sala.component';
 import { AdicionarAlunoComponent } from './adicionar-aluno/adicionar-aluno.component';
 import { EditarAlunoComponent } from './editar-aluno/editar-aluno.component';
 import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
+import { ReativarAlunosComponent } from './reativar-alunos/reativar-alunos.component';
 
 const routes: Routes = [
   { path: 'pagina-inicial', component: PaginaInicialComponent },
@@ -28,25 +29,25 @@ const routes: Routes = [
   { path: 'disciplinas', component: ListaDisciplinasComponent },
   { path: 'turmas', component: ListaTurmasComponent },
   { path: 'salas', component: ListaSalasComponent },
+  { path: 'alunos', component: ListaAlunosComponent },
 
   { path: 'adicionar-professor', component: AdicionarProfessorComponent },
   { path: 'adicionar-disciplina', component: AdicionarDisciplinaComponent },
   { path: 'adicionar-turma', component: AdicionarTurmaComponent },
   { path: 'adicionar-sala', component: AdicionarSalaComponent },
+  { path: 'adicionar-aluno', component: AdicionarAlunoComponent },
 
   { path: 'editar-professor/:id', component: EditarProfessorComponent },
   { path: 'editar-disciplina/:id', component: EditarDisciplinaComponent },
   { path: 'editar-sala/:id', component: EditarSalaComponent },
   { path: 'editar-turma/:id', component: EditarTurmaComponent },
+  { path: 'editar-aluno/:id', component: EditarAlunoComponent },
 
   { path: 'reativar-disciplina', component: ReativarDisciplinaComponent },
   { path: 'reativar-professor', component: ReativarProfessorComponent },
   { path: 'reativar-turma', component: ReativarTurmaComponent },
   { path: 'reativar-sala', component: ReativarSalaComponent },
-
-  { path: 'adicionar-aluno', component: AdicionarAlunoComponent },
-  { path: 'editar-aluno/:id', component: EditarAlunoComponent },
-  { path: 'alunos', component: ListaAlunosComponent },
+  { path: 'reativar-aluno', component: ReativarAlunosComponent },
 ];
 
 @NgModule({

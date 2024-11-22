@@ -31,6 +31,7 @@ import { AdicionarAlunoComponent } from './adicionar-aluno/adicionar-aluno.compo
 import { EditarAlunoComponent } from './editar-aluno/editar-aluno.component';
 import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
 import { CommonModule } from '@angular/common';
+import { ReativarAlunosComponent } from './reativar-alunos/reativar-alunos.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { CommonModule } from '@angular/common';
     ReativarDisciplinaComponent,
     ReativarTurmaComponent,
     ReativarSalaComponent,
+    ReativarAlunosComponent,
   ],
   imports: [
     BrowserModule,

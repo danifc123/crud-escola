@@ -26,6 +26,7 @@ app.get("/alunos", alunosController.getAlunos);
 app.post("/alunos", alunosController.createAluno);
 app.put("/alunos/:id", alunosController.updateAluno);
 app.delete("/alunos/:id", alunosController.deleteAluno);
+app.put("/alunos/:id/reativar", alunosController.reativarAluno);
 app.get("/alunos/search", alunosController.searchAlunos);
 
 app.get("/disciplinas", disciplinasController.getDisciplinas);

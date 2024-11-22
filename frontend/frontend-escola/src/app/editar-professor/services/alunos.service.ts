@@ -19,9 +19,10 @@ export class AlunosService {
   salvarAluno(aluno: any): Observable<any> {
     return this.http.post<any>(this.baseUrl, aluno);
   }
-  reativarAluno(id: number): Observable<any> {
+  reativarAluno(id: number): Observable<void> {
     return this.http.put<void>(`${this.baseUrl}/${id}/reativar`, {});
   }
+
   alterarAluno(aluno: any): Observable<any> {
     return this.http.put<any>(`${this.baseUrl}/${aluno.id}`, aluno);
   }

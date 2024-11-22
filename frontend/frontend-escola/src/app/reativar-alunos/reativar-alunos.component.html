@@ -1,0 +1,21 @@
+<h2>Reativar Alunos</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let aluno of alunosInativos">
+      <td>{{ aluno.id }}</td>
+      <td>{{ aluno.nome }}</td>
+      <td>{{ aluno.email }}</td>
+      <td>
+        <button (click)="reativarAluno(aluno.id)">Reativar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

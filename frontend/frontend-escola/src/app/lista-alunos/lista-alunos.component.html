@@ -10,6 +10,7 @@
       <th>Email</th>
       <th>Data de Nascimento</th>
       <th>Status</th>
+      <th>Ações</th>
     </tr>
   </thead>
   <tbody>
@@ -21,6 +22,17 @@
       <td>
         <span *ngIf="aluno.status">Ativo</span>
         <span *ngIf="!aluno.status" class="instatus">Inativo</span>
+      </td>
+      <td>
+        <button *ngIf="aluno.status" (click)="editarAluno(aluno.id)">
+          Editar
+        </button>
+        <button *ngIf="aluno.status" (click)="excluirAluno(aluno.id)">
+          Excluir
+        </button>
+        <a routerLink="/reativar-aluno">
+          <button>Reativar alunos</button>
+        </a>
       </td>
     </tr>
   </tbody>

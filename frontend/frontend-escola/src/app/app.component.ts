@@ -55,11 +55,12 @@ export class AppComponent {
       '/reativar-professor',
       '/alunos',
       '/adicionar-aluno',
+      '/reativar-aluno',
       '/editar-aluno',
     ];
 
     const rotaComParametroId =
-      /\/editar-(sala|disciplina|professor|turma)\/\d+$/;
+      /\/editar-(sala|disciplina|professor|turma|aluno)\/\d+$/;
     this.mostrarTabela =
       !rotasOcultarTabela.includes(url) && !rotaComParametroId.test(url);
   }
