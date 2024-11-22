@@ -6,29 +6,18 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class TurmaHasAlunosService {
-  private baseUrl = 'http://localhost:3000/api/turmas-has-alunos';
+  private baseUrl = 'http://localhost:3000/turmas-has-alunos';
 
   constructor(private http: HttpClient) {}
 
-  addAlunoToTurma(relacao: {
-    id_turma: string;
-    id_aluno: string;
-  }): Observable<any> {
-    return this.http.post(`${this.baseUrl}`, relacao);
+  //----------------------------------- CODIGOS QUE EU TENHO CERTEZA Q ESTAO SENDO UTILIZADOS---------------------------------------
+  getAlunosDaTurma(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/turmas-has-alunos`);
   }
-
-  getAlunosByTurma(id_turma: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/turma/${id_turma}`);
+  removerAluno(turmaId: number, alunoId: number) {
+    return this.http.delete(`${this.baseUrl}/${turmaId}/${alunoId}`);
   }
-
-  removeAlunoFromTurma(id_turma: string, id_aluno: string): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${id_turma}/aluno/${id_aluno}`);
-  }
-  editarRelacao(id: number, relacao: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/${id}`, relacao);
-  }
-
-  getRelacaoById(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${id}`);
+  adicionarAluno(turmaId: number, alunoId: number) {
+    return this.http.post(this.baseUrl, { turmaId, alunoId });
   }
 }

@@ -32,8 +32,9 @@ import { EditarAlunoComponent } from './editar-aluno/editar-aluno.component';
 import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
 import { CommonModule } from '@angular/common';
 import { ReativarAlunosComponent } from './reativar-alunos/reativar-alunos.component';
-import { AdicionarTurmaHasAlunoComponent } from './adicionar-turma-has-aluno/adicionar-turma-has-aluno.component';
-import { EditarTurmaHasAlunoComponent } from './editar-turma-has-aluno/editar-turma-has-aluno.component';
+// import { AdicionarTurmaHasAlunoComponent } from './adicionar-turma-has-aluno/adicionar-turma-has-aluno.component';
+// import { EditarTurmaHasAlunoComponent } from './editar-turma-has-aluno/editar-turma-has-aluno.component';
+import { ListaTurmaHasAlunoComponent } from './lista-turma-has-aluno/lista-turma-has-aluno.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { EditarTurmaHasAlunoComponent } from './editar-turma-has-aluno/editar-tu
     AdicionarProfessorComponent,
     AdicionarSalaComponent,
     AdicionarAlunoComponent,
-    AdicionarTurmaHasAlunoComponent,
+    //  AdicionarTurmaHasAlunoComponent,
 
     PaginaInicialComponent,
 
@@ -53,13 +54,14 @@ import { EditarTurmaHasAlunoComponent } from './editar-turma-has-aluno/editar-tu
     ListaDisciplinasComponent,
     ListaTurmasComponent,
     ListaAlunosComponent,
+    ListaTurmaHasAlunoComponent,
 
     EditarProfessorComponent,
     EditarDisciplinaComponent,
     EditarSalaComponent,
     EditarTurmaComponent,
     EditarAlunoComponent,
-    EditarTurmaHasAlunoComponent,
+    // EditarTurmaHasAlunoComponent,
 
     ReativarDisciplinaComponent,
     ReativarProfessorComponent,

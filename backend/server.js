@@ -57,13 +57,8 @@ app.delete("/salas/:id", salasController.deleteSala);
 app.put("/salas/:id/reativar", salasController.reativarSala);
 app.get("/salas/search", salasController.searchSalas);
 
-app.post("/turmas/:id_turma/alunos", turmasHasAlunosController.addAlunoToTurma);
-app.get("/turmas/:id_turma/alunos", turmasHasAlunosController.getAlunosByTurma);
-app.delete(
-  "/turmas/:id_turma/alunos/:id_aluno",
-  turmasHasAlunosController.removeAlunoFromTurma
-);
-app.get("/alunos/:id_aluno/turmas", turmasHasAlunosController.getTurmasByAluno);
+app.get("/turmas-has-alunos", turmasHasAlunosController.getTurmaHasAluno);
+
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });

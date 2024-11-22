@@ -1,0 +1,13 @@
+<h2>Alunos da Turma</h2>
+<ul>
+  <li *ngFor="let aluno of alunosNaTurma">
+    {{ aluno.nome }}
+  </li>
+</ul>
+
+<h3>Adicionar Aluno à Turma</h3>
+<select #novoAluno>
+  <option *ngFor="let aluno of alunosDisponiveis" [value]="aluno.id">
+    {{ aluno.nome }}
+  </option>
+</select>
