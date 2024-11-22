@@ -16,6 +16,13 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.BOOLEAN,
       defaultValue: true,
     },
+    turmaId: {
+      type: Sequelize.INTEGER,
+      references: {
+        model: "Turmas",
+        key: "id",
+      },
+    },
   });
   return Aluno;
 };

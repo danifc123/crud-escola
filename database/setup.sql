@@ -38,6 +38,7 @@ CREATE TABLE turmas (
     id_disciplina INT REFERENCES disciplinas(id),
     id_professor INT REFERENCES professores(id),
     id_sala INT REFERENCES salas(id),
+	id_aluno INT REFERENCES alunos(id),
     dia_semana VARCHAR(20) NOT NULL,        
     horario_inicio TIME NOT NULL,            
     horario_termino TIME NOT NULL,      
@@ -49,4 +50,12 @@ CREATE TABLE alunos (
     email VARCHAR(100) UNIQUE NOT NULL,
     data_nascimento DATE NOT NULL,
     status BOOLEAN DEFAULT TRUE
+);
+CREATE TABLE turmas_has_alunos (
+    id SERIAL PRIMARY KEY,
+    id_turma INT NOT NULL REFERENCES turmas(id) ON DELETE CASCADE,
+    id_aluno INT NOT NULL REFERENCES alunos(id) ON DELETE CASCADE,
+    data_matricula DATE DEFAULT CURRENT_DATE,
+    status BOOLEAN DEFAULT TRUE,
+    UNIQUE (id_turma, id_aluno)
 );

@@ -27,7 +27,7 @@ export class AppComponent {
   displayedColumns: string[] = [
     'professor',
     'turma',
-    'titulacao',
+    'disciplina',
     'sala',
     'status',
   ];
