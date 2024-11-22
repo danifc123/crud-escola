@@ -17,10 +17,15 @@ export class ListaAlunosComponent implements OnInit {
   }
 
   carregarAlunos() {
-    this.alunoService.getAluno().subscribe((data) => {
-      console.log('Dados recebidos:', data);
-      this.alunos = data;
-    });
+    this.alunoService.getAluno().subscribe(
+      (data) => {
+        console.log('Dados recebidos:', data);
+        this.alunos = data;
+      },
+      (error) => {
+        console.error('Erro ao carregar alunos:', error);
+      }
+    );
   }
 
   editarAluno(id: number) {

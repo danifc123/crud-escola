@@ -30,6 +30,7 @@ import { ReativarSalaComponent } from './reativar-sala/reativar-sala.component';
 import { AdicionarAlunoComponent } from './adicionar-aluno/adicionar-aluno.component';
 import { EditarAlunoComponent } from './editar-aluno/editar-aluno.component';
 import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
+    CommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

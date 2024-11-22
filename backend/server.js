@@ -22,6 +22,7 @@ app.get(
   paginainIcialController.getProfessorByName
 );
 
+app.get("/alunos", alunosController.getAlunos);
 app.post("/alunos", alunosController.createAluno);
 app.put("/alunos/:id", alunosController.updateAluno);
 app.delete("/alunos/:id", alunosController.deleteAluno);

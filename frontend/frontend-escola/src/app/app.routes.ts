@@ -28,7 +28,6 @@ const routes: Routes = [
   { path: 'disciplinas', component: ListaDisciplinasComponent },
   { path: 'turmas', component: ListaTurmasComponent },
   { path: 'salas', component: ListaSalasComponent },
-  { path: 'alunos', component: ListaAlunosComponent },
 
   { path: 'adicionar-professor', component: AdicionarProfessorComponent },
   { path: 'adicionar-disciplina', component: AdicionarDisciplinaComponent },
@@ -47,6 +46,7 @@ const routes: Routes = [
 
   { path: 'adicionar-aluno', component: AdicionarAlunoComponent },
   { path: 'editar-aluno/:id', component: EditarAlunoComponent },
+  { path: 'alunos', component: ListaAlunosComponent },
 ];
 
 @NgModule({
