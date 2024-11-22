@@ -21,8 +21,8 @@ import { AdicionarAlunoComponent } from './adicionar-aluno/adicionar-aluno.compo
 import { EditarAlunoComponent } from './editar-aluno/editar-aluno.component';
 import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
 import { ReativarAlunosComponent } from './reativar-alunos/reativar-alunos.component';
-import { AdicionarTurmaHasAlunoComponent } from './adicionar-turma-has-aluno/adicionar-turma-has-aluno.component';
-import { EditarTurmaHasAlunoComponent } from './editar-turma-has-aluno/editar-turma-has-aluno.component';
+// import { AdicionarTurmaHasAlunoComponent } from './adicionar-turma-has-aluno/adicionar-turma-has-aluno.component';
+// import { EditarTurmaHasAlunoComponent } from './editar-turma-has-aluno/editar-turma-has-aluno.component';
 import { ListaTurmaHasAlunoComponent } from './lista-turma-has-aluno/lista-turma-has-aluno.component';
 
 const routes: Routes = [

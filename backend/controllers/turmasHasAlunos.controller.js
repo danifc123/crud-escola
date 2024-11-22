@@ -2,7 +2,7 @@ const pool = require("../models/db.js");
 
 const getTurmaHasAluno = async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM turmas_has_alunos ");
+    const result = await pool.query("SELECT * FROM turmas_has_alunos  ");
     res.status(200).json(result.rows);
   } catch (error) {
     console.error(error);

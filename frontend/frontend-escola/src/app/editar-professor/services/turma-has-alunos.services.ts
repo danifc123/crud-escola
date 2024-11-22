@@ -12,7 +12,7 @@ export class TurmaHasAlunosService {
 
   //----------------------------------- CODIGOS QUE EU TENHO CERTEZA Q ESTAO SENDO UTILIZADOS---------------------------------------
   getAlunosDaTurma(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/turmas-has-alunos`);
+    return this.http.get<any[]>(`${this.baseUrl}`);
   }
   removerAluno(turmaId: number, alunoId: number) {
     return this.http.delete(`${this.baseUrl}/${turmaId}/${alunoId}`);

@@ -1,13 +1,21 @@
-<h2>Alunos da Turma</h2>
-<ul>
-  <li *ngFor="let aluno of alunosNaTurma">
-    {{ aluno.nome }}
-  </li>
-</ul>
+<div class="container">
+  <h2>Alunos na Turma</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Aluno ID</th>
+        <th>Nome do Aluno</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Itera sobre a lista de alunos da turma -->
+      <tr *ngFor="let aluno of alunosNaTurma">
+        <td>{{ aluno.aluno_id }}</td>
+        <td>{{ aluno.nome }}</td>
+      </tr>
+    </tbody>
+  </table>
 
-<h3>Adicionar Aluno à Turma</h3>
-<select #novoAluno>
-  <option *ngFor="let aluno of alunosDisponiveis" [value]="aluno.id">
-    {{ aluno.nome }}
-  </option>
-</select>
+  <!-- Exibe uma mensagem caso a lista esteja vazia -->
+  <p *ngIf="alunosNaTurma.length === 0">Nenhum aluno foi encontrado nesta turma.</p>
+</div>
