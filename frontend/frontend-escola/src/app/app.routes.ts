@@ -21,6 +21,8 @@ import { AdicionarAlunoComponent } from './adicionar-aluno/adicionar-aluno.compo
 import { EditarAlunoComponent } from './editar-aluno/editar-aluno.component';
 import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
 import { ReativarAlunosComponent } from './reativar-alunos/reativar-alunos.component';
+import { AdicionarTurmaHasAlunoComponent } from './adicionar-turma-has-aluno/adicionar-turma-has-aluno.component';
+import { EditarTurmaHasAlunoComponent } from './editar-turma-has-aluno/editar-turma-has-aluno.component';
 
 const routes: Routes = [
   { path: 'pagina-inicial', component: PaginaInicialComponent },
@@ -36,12 +38,20 @@ const routes: Routes = [
   { path: 'adicionar-turma', component: AdicionarTurmaComponent },
   { path: 'adicionar-sala', component: AdicionarSalaComponent },
   { path: 'adicionar-aluno', component: AdicionarAlunoComponent },
+  {
+    path: 'adicionar-turma-has-aluno',
+    component: AdicionarTurmaHasAlunoComponent,
+  },
 
   { path: 'editar-professor/:id', component: EditarProfessorComponent },
   { path: 'editar-disciplina/:id', component: EditarDisciplinaComponent },
   { path: 'editar-sala/:id', component: EditarSalaComponent },
   { path: 'editar-turma/:id', component: EditarTurmaComponent },
   { path: 'editar-aluno/:id', component: EditarAlunoComponent },
+  {
+    path: 'editar-turma-has-aluno/:id',
+    component: EditarTurmaHasAlunoComponent,
+  },
 
   { path: 'reativar-disciplina', component: ReativarDisciplinaComponent },
   { path: 'reativar-professor', component: ReativarProfessorComponent },

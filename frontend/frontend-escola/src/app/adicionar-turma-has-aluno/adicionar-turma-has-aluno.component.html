@@ -1,0 +1,41 @@
+<h2>Adicionar Aluno à Turma</h2>
+<form (ngSubmit)="adicionarAluno()">
+  <label>
+    Turma:
+    <select [(ngModel)]="relacao.id_turma" name="id_turma" required>
+      <option *ngFor="let turma of turmas" [value]="turma.id">
+        {{ turma.nome }}
+      </option>
+    </select>
+  </label>
+
+  <label>
+    Aluno:
+    <select [(ngModel)]="relacao.id_aluno" name="id_aluno" required>
+      <option *ngFor="let aluno of alunos" [value]="aluno.id">
+        {{ aluno.nome }}
+      </option>
+    </select>
+  </label>
+
+  <button type="submit">Adicionar Aluno</button>
+</form>
+
+<hr />
+
+<h2>Alunos na Turma</h2>
+<label>
+  Selecione a turma:
+  <select [(ngModel)]="turmaSelecionada" (change)="carregarAlunosPorTurma()">
+    <option *ngFor="let turma of turmas" [value]="turma.id">
+      {{ turma.nome }}
+    </option>
+  </select>
+</label>
+
+<ul>
+  <li *ngFor="let aluno of alunosNaTurma">
+    {{ aluno.nome }} ({{ aluno.email }})
+    <button (click)="removerAluno(aluno.id)">Remover</button>
+  </li>
+</ul>

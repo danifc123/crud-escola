@@ -1,0 +1,26 @@
+<div>
+  <h2>Editar Aluno na Turma</h2>
+  <form (ngSubmit)="editarAlunoNaTurma()">
+    <label for="id_turma">Turma:</label>
+    <select id="id_turma" [(ngModel)]="relacao.id_turma" name="id_turma" required>
+      <option *ngFor="let turma of turmas" [value]="turma.id">
+        {{ turma.nome }}
+      </option>
+    </select>
+    <br>
+
+    <label for="id_aluno">Aluno:</label>
+    <select id="id_aluno" [(ngModel)]="relacao.id_aluno" name="id_aluno" required>
+      <option *ngFor="let aluno of alunos" [value]="aluno.id">
+        {{ aluno.nome }}
+      </option>
+    </select>
+    <br>
+
+    <label for="data_matricula">Data de Matrícula:</label>
+    <input type="date" id="data_matricula" [(ngModel)]="relacao.data_matricula" name="data_matricula" required />
+    <br>
+
+    <button type="submit">Salvar Alterações</button>
+  </form>
+</div>
