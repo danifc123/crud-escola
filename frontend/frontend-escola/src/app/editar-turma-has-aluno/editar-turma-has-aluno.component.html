@@ -1,26 +1,23 @@
-<!-- <div>
-  <h2>Editar Aluno na Turma</h2>
-  <form (ngSubmit)="editarAlunoNaTurma()">
-    <label for="id_turma">Turma:</label>
-    <select id="id_turma" [(ngModel)]="relacao.id_turma" name="id_turma" required>
-      <option *ngFor="let turma of turmas" [value]="turma.id">
-        {{ turma.nome }}
-      </option>
-    </select>
-    <br>
+<div>
+  <h2>Editar Vínculo de Turma e Aluno</h2>
 
-    <label for="id_aluno">Aluno:</label>
-    <select id="id_aluno" [(ngModel)]="relacao.id_aluno" name="id_aluno" required>
-      <option *ngFor="let aluno of alunos" [value]="aluno.id">
-        {{ aluno.nome }}
-      </option>
-    </select>
-    <br>
-
-    <label for="data_matricula">Data de Matrícula:</label>
-    <input type="date" id="data_matricula" [(ngModel)]="relacao.data_matricula" name="data_matricula" required />
-    <br>
-
+  <form (ngSubmit)="updateTurmaHasAlunos()">
+    <div>
+      <label for="aluno">Selecione um Aluno:</label>
+      <select id="aluno" [(ngModel)]="selectedAlunoId" name="aluno" required>
+        <option *ngFor="let aluno of alunos" [value]="aluno.aluno_id">
+          {{ aluno.aluno_nome }}
+        </option>
+      </select>
+    </div>
+    <div>
+      <label for="vinculo">Selecione uma Turma:</label>
+      <select id="vinculo" [(ngModel)]="selectedTurmaId" name="vinculo" required>
+        <option *ngFor="let vinculo of alunos" [value]="vinculo.vinculo_id">
+          {{ vinculo.turma_nome }}
+        </option>
+      </select>
+    </div>
     <button type="submit">Salvar Alterações</button>
   </form>
-</div> -->
+</div>

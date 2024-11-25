@@ -19,10 +19,9 @@ export class TurmaHasAlunosService {
   }
   adicionarTurmaHasAluno(relacao: any): Observable<any> {
     console.log('Requisição enviada:', relacao);
-
     return this.http.post(`${this.baseUrl}/vinculo-aluno-turma`, relacao);
   }
-  editarTurmaHasAluno(id: number, relacao: any): Observable<void> {
+  updateTurmaHasAlunos(id: number, relacao: any): Observable<void> {
     return this.http.put<void>(`${this.baseUrl}/${id}`, relacao);
   }
   searchTurmasHasAlunos(nome: string): Observable<any[]> {

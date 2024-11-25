@@ -66,13 +66,13 @@ app.delete(
   "/turmas-has-alunos/:id",
   turmasHasAlunosController.deleteTurmaHasAluno
 );
-app.put(
-  "/turmas-has-alunos/:id",
-  turmasHasAlunosController.atualizarTurmaHasAluno
-);
 app.get(
   "/turmas-has-alunos/search",
   turmasHasAlunosController.searchTurmasHasAlunos
+);
+app.put(
+  "/turmas-has-alunos/:id",
+  turmasHasAlunosController.updateTurmaHasAlunos
 );
 
 app.listen(port, () => {

@@ -33,7 +33,7 @@ import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
 import { CommonModule } from '@angular/common';
 import { ReativarAlunosComponent } from './reativar-alunos/reativar-alunos.component';
 import { AdicionarTurmaHasAlunoComponent } from './adicionar-turma-has-aluno/adicionar-turma-has-aluno.component';
-// import { EditarTurmaHasAlunoComponent } from './editar-turma-has-aluno/editar-turma-has-aluno.component';
+import { EditarTurmaHasAlunoComponent } from './editar-turma-has-aluno/editar-turma-has-aluno.component';
 import { ListaTurmaHasAlunoComponent } from './lista-turma-has-aluno/lista-turma-has-aluno.component';
 
 @NgModule({
@@ -61,7 +61,7 @@ import { ListaTurmaHasAlunoComponent } from './lista-turma-has-aluno/lista-turma
     EditarSalaComponent,
     EditarTurmaComponent,
     EditarAlunoComponent,
-    // EditarTurmaHasAlunoComponent,
+    EditarTurmaHasAlunoComponent,
 
     ReativarDisciplinaComponent,
     ReativarProfessorComponent,
