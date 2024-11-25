@@ -59,10 +59,11 @@ export class AppComponent {
       '/editar-aluno',
       '/turma-has-alunos',
       '/adicionar-turma-has-aluno',
+      '/editar-turma-has-aluno',
     ];
 
     const rotaComParametroId =
-      /\/editar-(sala|disciplina|professor|turma|aluno)\/\d+$/;
+      /\/editar-(sala|disciplina|professor|turma|aluno|turma-has-aluno)\/\d+$/;
     this.mostrarTabela =
       !rotasOcultarTabela.includes(url) && !rotaComParametroId.test(url);
   }

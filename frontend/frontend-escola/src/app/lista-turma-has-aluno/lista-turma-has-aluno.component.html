@@ -1,24 +1,27 @@
-<div class="container">
-  <h2>Alunos na Turma</h2>
-  <table border="1">
-    <thead>
-      <tr>
-        <th>Aluno ID</th>
-        <th>Nome do Aluno</th>
-        <th>Turma</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Itera sobre a lista de alunos da turma -->
-      <tr *ngFor="let aluno of alunos">
-        <td>{{ aluno.aluno_id }}</td>
-        <td>{{ aluno.aluno_nome }}</td>
-        <td>{{ aluno.turma_nome }}</td>
-      </tr>
-    </tbody>
-  </table>
+<input type="text" placeholder="Pesquisar aluno" [(ngModel)]="termoPesquisa" (input)="pesquisarAluno()" />
 
+<h2>Alunos na Turma</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Aluno ID</th>
+      <th>Nome do Aluno</th>
+      <th>Turma</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let aluno of alunos">
+      <td>{{ aluno.aluno_id }}</td>
+      <td>{{ aluno.aluno_nome }}</td>
+      <td>{{ aluno.turma_nome }}</td>
+      <td>
+        <button (click)="deleteTurmaHasAluno(aluno.vinculo_id)">Deletar</button>
+        <button (click)="editarTurmaHasAluno(aluno.vinculo_id)">Editar</button>
 
-  <!-- Exibe uma mensagem caso a lista esteja vazia -->
-  <p *ngIf="alunos.length === 0">Nenhum aluno foi encontrado nesta turma.</p>
-</div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!-- Exibe uma mensagem caso a lista esteja vazia -->
+<p *ngIf="alunos.length === 0">Nenhum aluno foi encontrado nesta turma.</p>

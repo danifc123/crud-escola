@@ -62,6 +62,14 @@ app.post(
   "/turmas-has-alunos/vinculo-aluno-turma",
   turmasHasAlunosController.adicionarTurmaHasAluno
 );
+app.delete(
+  "/turmas-has-alunos/:id",
+  turmasHasAlunosController.deleteTurmaHasAluno
+);
+app.put(
+  "/turmas-has-alunos/:id",
+  turmasHasAlunosController.atualizarTurmaHasAluno
+);
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);

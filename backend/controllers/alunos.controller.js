@@ -3,13 +3,12 @@ const pool = require("../models/db.js");
 const getAlunos = async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM alunos ");
-    res.status(200).json(result.rows); // Retorna os dados obtidos
+    res.status(200).json(result.rows);
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, message: "Erro ao buscar alunos" });
   }
 };
-// 1. Salvar aluno
 const createAluno = async (req, res) => {
   const { nome, email, data_nascimento } = req.body;
 
@@ -25,7 +24,6 @@ const createAluno = async (req, res) => {
   }
 };
 
-// 2. Alterar aluno
 const updateAluno = async (req, res) => {
   const { id } = req.params;
   const { nome, email, data_nascimento } = req.body;
@@ -45,7 +43,6 @@ const updateAluno = async (req, res) => {
   }
 };
 
-// 3. Excluir aluno (soft delete)
 const deleteAluno = async (req, res) => {
   const { id } = req.params;
 
@@ -64,7 +61,6 @@ const deleteAluno = async (req, res) => {
   }
 };
 
-// 4. Pesquisar aluno por nome
 const searchAlunos = async (req, res) => {
   const { nome } = req.query;
 
