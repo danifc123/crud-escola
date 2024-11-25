@@ -45,8 +45,19 @@ export class ListaTurmaHasAlunoComponent {
     this.router.navigate(['/editar-turma-has-aluno', id]);
   }
   pesquisarAluno() {
-    this.alunos = this.alunos.filter((aluno) =>
-      aluno.aluno_nome.toLowerCase().includes(this.termoPesquisa.toLowerCase())
-    );
+    if (this.termoPesquisa.trim() === '') {
+      this.carregarAlunosDaTurma();
+    } else {
+      this.turmaHasAlunosService
+        .searchTurmasHasAlunos(this.termoPesquisa)
+        .subscribe(
+          (data) => {
+            this.alunos = data;
+          },
+          (error) => {
+            alert('Erro ao buscar vinculos: ' + error.message);
+          }
+        );
+    }
   }
 }

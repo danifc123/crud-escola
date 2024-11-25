@@ -25,4 +25,7 @@ export class TurmaHasAlunosService {
   editarTurmaHasAluno(id: number, relacao: any): Observable<void> {
     return this.http.put<void>(`${this.baseUrl}/${id}`, relacao);
   }
+  searchTurmasHasAlunos(nome: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/search`, { params: { nome } });
+  }
 }

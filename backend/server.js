@@ -70,6 +70,10 @@ app.put(
   "/turmas-has-alunos/:id",
   turmasHasAlunosController.atualizarTurmaHasAluno
 );
+app.get(
+  "/turmas-has-alunos/search",
+  turmasHasAlunosController.searchTurmasHasAlunos
+);
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
