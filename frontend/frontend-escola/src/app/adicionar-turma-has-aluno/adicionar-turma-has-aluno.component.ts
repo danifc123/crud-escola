@@ -1,81 +1,76 @@
-// import { Component } from '@angular/core';
-// import { TurmaService } from '../editar-professor/services/turma.service';
-// import { AlunosService } from '../editar-professor/services/alunos.service';
-// import { TurmaHasAlunosService } from '../editar-professor/services/turma-has-alunos.services';
+import { Component } from '@angular/core';
+import { TurmaService } from '../editar-professor/services/turma.service';
+import { AlunosService } from '../editar-professor/services/alunos.service';
+import { TurmaHasAlunosService } from '../editar-professor/services/turma-has-alunos.services';
 
-// @Component({
-//   selector: 'app-adicionar-turma-has-aluno',
-//   templateUrl: './adicionar-turma-has-aluno.component.html',
-//   styleUrl: './adicionar-turma-has-aluno.component.css',
-// })
-// export class AdicionarTurmaHasAlunoComponent {
-//   turmas: any[] = [];
-//   alunos: any[] = [];
-//   alunosNaTurma: any[] = [];
-//   turmaSelecionada: string = '';
-//   relacao = { id_turma: '', id_aluno: '' };
+@Component({
+  selector: 'app-adicionar-turma-has-aluno',
+  templateUrl: './adicionar-turma-has-aluno.component.html',
+  styleUrls: ['./adicionar-turma-has-aluno.component.css'],
+})
+export class AdicionarTurmaHasAlunoComponent {
+  alunos: any[] = [];
+  turmas: any[] = [];
+  alunosNaTurma: any[] = [];
+  turmaSelecionada: number = 0; // Guarda o id da turma selecionada
+  relacao = {
+    id_turma: null,
+    id_aluno: null,
+  };
 
-//   constructor(
-//     private turmaService: TurmaService,
-//     private alunosService: AlunosService,
-//     private turmaHasAlunosService: TurmaHasAlunosService
-//   ) {}
+  constructor(
+    private turmaService: TurmaService,
+    private alunosService: AlunosService,
+    private turmaHasAlunosService: TurmaHasAlunosService
+  ) {}
 
-//   ngOnInit(): void {
-//     this.carregarTurmas();
-//     this.carregarAlunos();
-//   }
+  ngOnInit(): void {
+    this.carregarAlunos();
+    this.carregarTurma();
+  }
 
-//   carregarTurmas() {
-//     this.turmaService.getTurmas().subscribe((data) => {
-//       this.turmas = data;
-//     });
-//   }
+  carregarAlunos() {
+    this.alunosService.getAluno().subscribe((data) => {
+      this.alunos = data;
+    });
+  }
 
-//   carregarAlunos() {
-//     this.alunosService.getAluno().subscribe((data) => {
-//       this.alunos = data;
-//     });
-//   }
+  carregarTurma() {
+    this.turmaService.getTurmas().subscribe((data) => {
+      this.turmas = data;
+    });
+  }
 
-//   carregarAlunosPorTurma() {
-//     if (!this.turmaSelecionada) return;
-//     this.turmaHasAlunosService
-//       .getAlunosByTurma(this.turmaSelecionada)
-//       .subscribe((data) => {
-//         this.alunosNaTurma = data;
-//       });
-//   }
+  carregarAlunosPorTurma() {
+    if (this.turmaSelecionada) {
+      // Supondo que você tenha um método para buscar os alunos por turma
+      this.turmaHasAlunosService.getAlunosDaTurma().subscribe((data) => {
+        this.alunosNaTurma = data;
+      });
+    }
+  }
 
-//   adicionarAluno() {
-//     if (!this.relacao.id_turma || !this.relacao.id_aluno) {
-//       alert('Por favor, selecione uma turma e um aluno.');
-//       return;
-//     }
+  adicionarTurmaHasAluno() {
+    console.log('ID Turma:', this.relacao.id_turma); // Verifique se está preenchido
+    console.log('ID Aluno:', this.relacao.id_aluno);
 
-//     this.turmaHasAlunosService.addAlunoToTurma(this.relacao).subscribe(
-//       () => {
-//         alert('Aluno adicionado à turma com sucesso!');
-//         this.carregarAlunosPorTurma();
-//       },
-//       (error) => {
-//         console.error(error);
-//         alert('Erro ao adicionar aluno à turma.');
-//       }
-//     );
-//   }
+    const payload = {
+      turma_id: this.relacao.id_turma, // Altere o nome da chave
+      aluno_id: this.relacao.id_aluno, // Altere o nome da chave
+    };
 
-//   removerAluno(id_aluno: string) {
-//     this.turmaHasAlunosService
-//       .removeAlunoFromTurma(this.turmaSelecionada, id_aluno)
-//       .subscribe(
-//         () => {
-//           alert('Aluno removido da turma com sucesso!');
-//           this.carregarAlunosPorTurma();
-//         },
-//         (error) => {
-//           console.error(error);
-//           alert('Erro ao remover aluno da turma.');
-//         }
-//       );
-//   }
+    if (payload.turma_id && payload.aluno_id) {
+      this.turmaHasAlunosService.adicionarTurmaHasAluno(payload).subscribe(
+        (response) => {
+          console.log('Vínculo criado com sucesso:', response);
+          this.carregarAlunosPorTurma(); // Atualiza a lista de alunos da turma
+        },
+        (error) => {
+          console.error('Erro ao vincular aluno à turma:', error);
+        }
+      );
+    } else {
+      console.log('Faltando valores de turma_id ou aluno_id');
+    }
+  }
+}

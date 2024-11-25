@@ -17,7 +17,9 @@ export class TurmaHasAlunosService {
   removerAluno(turmaId: number, alunoId: number) {
     return this.http.delete(`${this.baseUrl}/${turmaId}/${alunoId}`);
   }
-  adicionarAluno(turmaId: number, alunoId: number) {
-    return this.http.post(this.baseUrl, { turmaId, alunoId });
+  adicionarTurmaHasAluno(relacao: any): Observable<any> {
+    console.log('Requisição enviada:', relacao); // Verifique o conteúdo da requisição
+
+    return this.http.post(`${this.baseUrl}/vinculo-aluno-turma`, relacao);
   }
 }

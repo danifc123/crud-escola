@@ -58,6 +58,10 @@ app.put("/salas/:id/reativar", salasController.reativarSala);
 app.get("/salas/search", salasController.searchSalas);
 
 app.get("/turmas-has-alunos", turmasHasAlunosController.getTurmaHasAluno);
+app.post(
+  "/turmas-has-alunos/vinculo-aluno-turma",
+  turmasHasAlunosController.adicionarTurmaHasAluno
+);
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);

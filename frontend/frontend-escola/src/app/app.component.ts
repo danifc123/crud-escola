@@ -58,6 +58,7 @@ export class AppComponent {
       '/reativar-aluno',
       '/editar-aluno',
       '/turma-has-alunos',
+      '/adicionar-turma-has-aluno',
     ];
 
     const rotaComParametroId =
