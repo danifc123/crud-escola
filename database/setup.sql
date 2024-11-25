@@ -30,7 +30,20 @@ CREATE TABLE salas (
     capacidade VARCHAR(100) NOT NULL,        
     status BOOLEAN DEFAULT TRUE       
 );
-
+CREATE TABLE alunos (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    data_nascimento DATE NOT NULL,
+    status BOOLEAN DEFAULT TRUE
+);
+CREATE TABLE turmas_has_alunos (
+    id SERIAL PRIMARY KEY,
+    turma_id INT NOT NULL,
+    aluno_id INT NOT NULL,
+    FOREIGN KEY (turma_id) REFERENCES turmas(id) ON DELETE CASCADE,
+    FOREIGN KEY (aluno_id) REFERENCES alunos(id) ON DELETE CASCADE
+);
 -- Tabela de Turmas
 CREATE TABLE turmas (
     id SERIAL PRIMARY KEY,
@@ -44,18 +57,4 @@ CREATE TABLE turmas (
     horario_termino TIME NOT NULL,      
     status BOOLEAN DEFAULT TRUE            
 );
-CREATE TABLE alunos (
-    id SERIAL PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    data_nascimento DATE NOT NULL,
-    status BOOLEAN DEFAULT TRUE
-);
-CREATE TABLE turmas_has_alunos (
-    id SERIAL PRIMARY KEY,
-    id_turma INT NOT NULL REFERENCES turmas(id) ON DELETE CASCADE,
-    id_aluno INT NOT NULL REFERENCES alunos(id) ON DELETE CASCADE,
-    data_matricula DATE DEFAULT CURRENT_DATE,
-    status BOOLEAN DEFAULT TRUE,
-    UNIQUE (id_turma, id_aluno)
-);
+

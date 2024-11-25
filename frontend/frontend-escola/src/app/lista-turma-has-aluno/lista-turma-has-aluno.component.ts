@@ -16,6 +16,7 @@ export class ListaTurmaHasAlunoComponent {
 
   carregarAlunosDaTurma() {
     this.turmaHasAlunosService.getAlunosDaTurma().subscribe((data) => {
+      console.log('Dados retornados da API:', data); // Verifique a estrutura aqui
       this.alunosNaTurma = data;
     });
   }
