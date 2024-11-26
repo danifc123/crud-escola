@@ -25,9 +25,8 @@
       <td>
         <button *ngIf="sala.status" (click)="editarSala(sala.id)">Editar</button>
         <button *ngIf="sala.status" (click)="excluirSala(sala.id)">Excluir</button>
-        <a routerLink="/reativar-sala"><button>Reativar Salas</button></a>
-
       </td>
     </tr>
   </tbody>
 </table>
+<a routerLink="/reativar-sala"><button>Reativar Salas</button></a>

@@ -13,6 +13,7 @@
       <th>Ações</th>
     </tr>
   </thead>
+
   <tbody>
     <tr *ngFor="let aluno of alunos">
       <td>{{ aluno.id }}</td>
@@ -30,10 +31,10 @@
         <button *ngIf="aluno.status" (click)="excluirAluno(aluno.id)">
           Excluir
         </button>
-        <a routerLink="/reativar-aluno">
-          <button>Reativar alunos</button>
-        </a>
       </td>
     </tr>
   </tbody>
 </table>
+<a routerLink="/reativar-aluno">
+  <button>Reativar alunos</button>
+</a>
