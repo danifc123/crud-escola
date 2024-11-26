@@ -67,32 +67,7 @@ const deleteTurmaHasAluno = async (req, res) => {
     res.status(500).json({ error: "Erro ao excluir vinculo" });
   }
 };
-const atualizarTurmaHasAluno = async (req, res) => {
-  try {
-    const { id } = req.params; // ID do vínculo
-    const { turma_id, aluno_id } = req.body; // Novos valores
 
-    if (!turma_id || !aluno_id) {
-      return res
-        .status(400)
-        .json({ error: "Faltando parâmetros: turma_id ou aluno_id" });
-    }
-
-    const result = await pool.query(
-      "UPDATE turmas_has_alunos SET turma_id = $1, aluno_id = $2 WHERE id = $3",
-      [turma_id, aluno_id, id]
-    );
-
-    if (result.rowCount === 0) {
-      return res.status(404).json({ error: "Vínculo não encontrado" });
-    }
-
-    res.status(200).json({ message: "Vínculo atualizado com sucesso!" });
-  } catch (error) {
-    console.error("Erro ao atualizar vínculo:", error);
-    res.status(500).json({ error: "Erro ao atualizar vínculo" });
-  }
-};
 const searchTurmasHasAlunos = async (req, res) => {
   const { nome } = req.query;
   try {
@@ -112,13 +87,14 @@ const searchTurmasHasAlunos = async (req, res) => {
 };
 const updateTurmaHasAlunos = async (req, res) => {
   try {
-    const { id } = req.params; // ID do vínculo
-    const { turma_id, aluno_id } = req.body; // Novos valores
+    const { id } = req.params;
+    const { turma_id, aluno_id } = req.body;
 
-    if (!turma_id || !aluno_id) {
-      return res
-        .status(400)
-        .json({ error: "Faltando parâmetros: turma_id ou aluno_id" });
+    if (!id || !turma_id || !aluno_id) {
+      return res.status(400).json({
+        error:
+          "É necessário fornecer o ID do vínculo, o ID da turma e o ID do aluno.",
+      });
     }
 
     const result = await pool.query(
@@ -127,13 +103,13 @@ const updateTurmaHasAlunos = async (req, res) => {
     );
 
     if (result.rowCount === 0) {
-      return res.status(404).json({ error: "Vínculo não encontrado" });
+      return res.status(404).json({ error: "Vínculo não encontrado." });
     }
 
     res.status(200).json({ message: "Vínculo atualizado com sucesso!" });
   } catch (error) {
     console.error("Erro ao atualizar vínculo:", error);
-    res.status(500).json({ error: "Erro ao atualizar vínculo" });
+    res.status(500).json({ error: "Erro ao atualizar vínculo." });
   }
 };
 module.exports = {

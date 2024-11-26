@@ -1,23 +1,24 @@
 <div>
-  <h2>Editar Vínculo de Turma e Aluno</h2>
+  <h2>Editar Vínculo entre Aluno e Turma</h2>
 
-  <form (ngSubmit)="updateTurmaHasAlunos()">
-    <div>
-      <label for="aluno">Selecione um Aluno:</label>
-      <select id="aluno" [(ngModel)]="selectedAlunoId" name="aluno" required>
-        <option *ngFor="let aluno of alunos" [value]="aluno.aluno_id">
-          {{ aluno.aluno_nome }}
-        </option>
-      </select>
-    </div>
-    <div>
-      <label for="vinculo">Selecione uma Turma:</label>
-      <select id="vinculo" [(ngModel)]="selectedTurmaId" name="vinculo" required>
-        <option *ngFor="let vinculo of alunos" [value]="vinculo.vinculo_id">
-          {{ vinculo.turma_nome }}
-        </option>
-      </select>
-    </div>
+  <form (ngSubmit)="atualizarVinculo()">
+    <!-- Seleção de Aluno -->
+    <label for="aluno">Selecione um Aluno:</label>
+    <select id="aluno" [(ngModel)]="selectedAlunoId" name="aluno" required>
+      <option *ngFor="let aluno of alunos" [value]="aluno.id">
+        {{ aluno.nome }}
+      </option>
+    </select>
+
+    <!-- Seleção de Turma -->
+    <label for="turma">Selecione uma Turma:</label>
+    <select id="turma" [(ngModel)]="selectedTurmaId" name="turma" required>
+      <option *ngFor="let turma of turmas" [value]="turma.id">
+        {{ turma.nome }}
+      </option>
+    </select>
+
+    <!-- Botão para atualizar o vínculo -->
     <button type="submit">Salvar Alterações</button>
   </form>
 </div>
